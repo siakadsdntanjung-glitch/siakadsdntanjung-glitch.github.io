@@ -1,0 +1,2655 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Karya Digital — Aplikasi & Website Siap Pakai</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,500;8..60,600;8..60,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    box-sizing: border-box;
+    --ink: #13261b;
+    --ink-soft: #1b3527;
+    --paper: #ffffff;
+    --paper-dim: #edf6f0;
+    --indigo: #1c7a45;
+    --amber: #f0aaa3;
+    --amber-deep: #b8241c;
+    --slate: #5c6c62;
+    --white: #ffffff;
+    --card-bg: #ffffff;
+    --card-border: #d7e6db;
+    --shadow: 0 1px 0 rgba(20,23,31,0.06);
+    --serif: "Source Serif 4", Georgia, "Times New Roman", serif;
+    --sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  html { scroll-padding-top: env(safe-area-inset-top, 0px); scroll-behavior: smooth; }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ink: #eaf3ee;
+      --paper: #0c1712;
+      --paper-dim: #122019;
+      --card-bg: #122019;
+      --card-border: #223a2c;
+      --slate: #9fb2a6;
+      --shadow: 0 1px 0 rgba(0,0,0,0.4);
+    }
+  }
+  :root[data-theme="dark"] {
+    --ink: #eaf3ee;
+    --paper: #0c1712;
+    --paper-dim: #122019;
+    --card-bg: #122019;
+    --card-border: #223a2c;
+    --slate: #9fb2a6;
+    --shadow: 0 1px 0 rgba(0,0,0,0.4);
+  }
+  * { box-sizing: border-box; }
+  html, body { height: 100%; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--sans);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+  img { max-width: 100%; display: block; }
+  a { color: inherit; }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+  .scrollx { overflow-x: auto; }
+
+  /* Header */
+  header.site {
+    position: sticky;
+    top: 0;
+    top: env(safe-area-inset-top, 0px);
+    z-index: 40;
+    background: var(--paper);
+    border-bottom: 1px solid var(--card-border);
+  }
+  .site-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 24px;
+    max-width: 1120px;
+    margin: 0 auto;
+    gap: 16px;
+  }
+  .brand {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    font-family: var(--serif);
+    font-size: 22px;
+    font-weight: 680;
+    letter-spacing: -0.01em;
+    text-decoration: none;
+  }
+  .brand span.dot { color: var(--amber-deep); }
+  nav.site-nav { display: flex; gap: 28px; }
+  nav.site-nav a {
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--slate);
+  }
+  nav.site-nav a:hover { color: var(--ink); }
+  .cart-btn {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--ink);
+    color: var(--paper);
+    border: none;
+    border-radius: 8px;
+    padding: 10px 18px 10px 14px;
+    font-family: var(--sans);
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+  }
+  .header-actions { display: flex; align-items: center; gap: 10px; }
+  .admin-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    background: transparent;
+    color: var(--slate);
+    border: 1px solid var(--card-border);
+    border-radius: 8px;
+    padding: 9px 14px 9px 12px;
+    font-family: var(--sans);
+    font-weight: 600;
+    font-size: 13.5px;
+    cursor: pointer;
+  }
+  .admin-btn:hover { color: var(--ink); border-color: var(--ink); }
+  .cart-count {
+    position: absolute;
+    top: -6px;
+    right: -6px;
+    background: var(--amber-deep);
+    color: white;
+    font-size: 11px;
+    font-weight: 700;
+    min-width: 18px;
+    height: 18px;
+    border-radius: 999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 4px;
+  }
+
+  /* Hero */
+  .hero {
+    padding: 64px 24px 48px;
+  }
+  .hero-inner {
+    max-width: 1120px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 48px;
+    align-items: center;
+  }
+  .eyebrow-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--paper-dim);
+    border: 1px solid var(--card-border);
+    border-radius: 6px;
+    padding: 6px 14px 6px 8px;
+    font-size: 13px;
+    color: var(--slate);
+    margin-bottom: 20px;
+  }
+  .eyebrow-chip .swatch { width: 8px; height: 8px; border-radius: 999px; background: var(--amber-deep); }
+  h1.hero-title {
+    font-family: var(--serif);
+    font-weight: 620;
+    font-size: clamp(34px, 5vw, 54px);
+    line-height: 1.06;
+    letter-spacing: -0.015em;
+    margin: 0 0 20px;
+    max-width: 14ch;
+  }
+  .hero-sub {
+    font-size: 17px;
+    color: var(--slate);
+    max-width: 46ch;
+    margin: 0 0 28px;
+  }
+  .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 32px; }
+  .btn-primary {
+    background: var(--ink);
+    color: var(--paper);
+    border: 1px solid var(--ink);
+    border-radius: 10px;
+    padding: 13px 22px;
+    font-weight: 600;
+    font-size: 15px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+  }
+  .btn-ghost {
+    background: transparent;
+    color: var(--ink);
+    border: 1px solid var(--card-border);
+    border-radius: 10px;
+    padding: 13px 22px;
+    font-weight: 600;
+    font-size: 15px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+  }
+  .hero-stats { display: flex; gap: 28px; }
+  .stat b { font-family: var(--serif); font-size: 26px; font-weight: 620; display: block; }
+  .stat span { font-size: 13px; color: var(--slate); }
+
+  .hero-art { position: relative; }
+  .hero-art svg { width: 100%; height: auto; }
+
+  /* Category tabs */
+  .tabs-row {
+    padding: 0 24px 8px;
+    border-bottom: 1px solid var(--card-border);
+  }
+  .tabs {
+    max-width: 1120px;
+    margin: 0 auto;
+    display: flex;
+    gap: 6px;
+    padding-bottom: 12px;
+    overflow-x: auto;
+  }
+  .tab {
+    flex: none;
+    border: 1px solid var(--card-border);
+    background: var(--card-bg);
+    color: var(--slate);
+    border-radius: 6px;
+    padding: 8px 16px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+  }
+  .tab.active {
+    background: var(--ink);
+    color: var(--paper);
+    border-color: var(--ink);
+  }
+
+  /* Product grid */
+  .catalog { padding: 40px 24px 20px; }
+  .catalog h2 {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 26px;
+    margin: 0 0 4px;
+  }
+  .catalog .lede { color: var(--slate); margin: 0 0 28px; font-size: 15px; }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+  }
+  .card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 10px;
+    padding: 22px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: var(--shadow);
+  }
+  .card-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; margin-bottom: 14px; }
+  .card-icon {
+    width: 46px; height: 46px;
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    flex: none;
+  }
+  .card-icon.school { background: rgba(28,122,69,0.12); color: var(--indigo); }
+  .card-icon.invite { background: rgba(184,36,28,0.14); color: var(--amber-deep); }
+  .badge {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--slate);
+    border: 1px solid var(--card-border);
+    border-radius: 5px;
+    padding: 4px 10px;
+    white-space: nowrap;
+  }
+  .card h3 {
+    font-family: var(--serif);
+    font-size: 21px;
+    font-weight: 600;
+    margin: 0 0 8px;
+  }
+  .card p.desc {
+    color: var(--slate);
+    font-size: 14.5px;
+    margin: 0 0 16px;
+    flex-grow: 0;
+  }
+  .card ul.feat {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .card ul.feat li {
+    font-size: 13.5px;
+    color: var(--ink);
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+  }
+  .card ul.feat li svg { flex: none; margin-top: 2px; color: var(--amber-deep); }
+
+  .variant-group { margin-bottom: 16px; }
+  .variant-label { font-size: 12.5px; color: var(--slate); margin-bottom: 8px; font-weight: 500; }
+  .variant-options { display: flex; gap: 8px; flex-wrap: wrap; }
+  .variant-pill {
+    border: 1px solid var(--card-border);
+    background: var(--paper);
+    border-radius: 10px;
+    padding: 8px 12px;
+    font-size: 13px;
+    cursor: pointer;
+    text-align: left;
+    color: var(--ink);
+  }
+  .variant-pill.selected {
+    border-color: var(--indigo);
+    background: rgba(28,122,69,0.08);
+  }
+  .variant-pill .vname { display: block; font-weight: 600; }
+  .variant-pill .vprice { display: block; color: var(--slate); font-size: 12px; margin-top: 2px; }
+
+  .card-bottom {
+    margin-top: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding-top: 16px;
+    border-top: 1px solid var(--card-border);
+  }
+  .price-now { font-family: var(--serif); font-size: 22px; font-weight: 620; }
+  .add-btn {
+    background: var(--ink);
+    color: var(--paper);
+    border: none;
+    border-radius: 10px;
+    padding: 11px 18px;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+  }
+  .add-btn:active { transform: translateY(1px); }
+  .demo-link {
+    display: inline-block;
+    margin-top: 10px;
+    font-size: 13px;
+    color: var(--indigo);
+    text-decoration: underline;
+  }
+
+  /* Trust section */
+  .trust {
+    padding: 56px 24px;
+    border-top: 1px solid var(--card-border);
+    border-bottom: 1px solid var(--card-border);
+    background: var(--paper-dim);
+  }
+  .trust-inner { max-width: 1120px; margin: 0 auto; display: grid; grid-template-columns: repeat(3,1fr); gap: 32px; }
+  .trust-item h4 { font-family: var(--serif); font-size: 18px; margin: 12px 0 6px; font-weight: 600; }
+  .trust-item p { color: var(--slate); font-size: 14px; margin: 0; }
+  .trust-item .num { font-family: var(--serif); font-size: 15px; color: var(--amber-deep); font-weight: 700; }
+
+  footer.site {
+    padding: 48px 24px 40px;
+  }
+  .footer-inner { max-width: 1120px; margin: 0 auto; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 24px; }
+  footer.site .brand { margin-bottom: 8px; }
+  footer.site p { color: var(--slate); font-size: 14px; max-width: 40ch; margin: 0; }
+  footer.site .contact { font-size: 14px; }
+  footer.site .contact a { text-decoration: underline; }
+
+  /* Cart drawer */
+  .overlay {
+    position: fixed; inset: 0;
+    background: rgba(20,23,31,0.45);
+    opacity: 0; pointer-events: none;
+    transition: opacity 0.25s ease;
+    z-index: 50;
+  }
+  .overlay.open { opacity: 1; pointer-events: auto; }
+  .drawer {
+    position: fixed;
+    top: 0; right: 0;
+    height: 100%;
+    width: min(420px, 100%);
+    background: var(--card-bg);
+    z-index: 60;
+    display: flex;
+    flex-direction: column;
+    transform: translateX(100%);
+    transition: transform 0.28s ease;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  .drawer.open { transform: translateX(0); }
+  .drawer-head {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 20px 22px;
+    border-bottom: 1px solid var(--card-border);
+  }
+  .drawer-head h3 { font-family: var(--serif); font-size: 20px; margin: 0; font-weight: 620; }
+  .close-btn { background: none; border: none; font-size: 22px; cursor: pointer; color: var(--slate); line-height: 1; }
+  .drawer-body { flex: 1; overflow-y: auto; padding: 16px 22px; }
+  .cart-empty { color: var(--slate); font-size: 14px; padding: 40px 0; text-align: center; }
+  .cart-item {
+    display: flex; gap: 12px;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--card-border);
+  }
+  .cart-item .ci-icon {
+    width: 40px; height: 40px; border-radius: 8px; flex: none;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .cart-item .ci-info { flex: 1; min-width: 0; }
+  .cart-item .ci-info b { font-size: 14.5px; display: block; }
+  .cart-item .ci-info .ci-variant { font-size: 12.5px; color: var(--slate); }
+  .ci-row { display: flex; align-items: center; justify-content: space-between; margin-top: 8px; }
+  .qty-ctrl { display: flex; align-items: center; gap: 8px; border: 1px solid var(--card-border); border-radius: 8px; }
+  .qty-ctrl button { background: none; border: none; width: 26px; height: 26px; font-size: 15px; cursor: pointer; color: var(--ink); }
+  .qty-ctrl span { font-size: 13px; min-width: 14px; text-align: center; }
+  .ci-price { font-size: 14px; font-weight: 600; }
+  .ci-remove { background: none; border: none; color: var(--slate); font-size: 12.5px; cursor: pointer; text-decoration: underline; padding: 0; }
+
+  .drawer-foot {
+    border-top: 1px solid var(--card-border);
+    padding: 18px 22px;
+  }
+  .sum-row { display: flex; justify-content: space-between; font-size: 14px; color: var(--slate); margin-bottom: 6px; }
+  .sum-total { display: flex; justify-content: space-between; font-family: var(--serif); font-size: 20px; font-weight: 620; margin: 10px 0 16px; }
+  .checkout-btn {
+    width: 100%;
+    background: var(--amber-deep);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 14px;
+    font-weight: 700;
+    font-size: 15px;
+    cursor: pointer;
+  }
+  .checkout-btn:disabled { background: var(--card-border); color: var(--slate); cursor: not-allowed; }
+  .checkout-note { font-size: 12px; color: var(--slate); margin-top: 10px; text-align: center; }
+
+  /* Modals (admin login + admin panel) */
+  .modal-overlay {
+    position: fixed; inset: 0;
+    background: rgba(20,23,31,0.5);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 80;
+    padding: 20px;
+  }
+  .modal-overlay.open { display: flex; }
+  .modal-box {
+    background: var(--card-bg);
+    border-radius: 10px;
+    border: 1px solid var(--card-border);
+    width: 100%;
+    max-width: 420px;
+    max-height: calc(100vh - 40px);
+    overflow-y: auto;
+    padding: 26px;
+  }
+  .modal-box.wide { max-width: 760px; }
+  .modal-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
+  .modal-head h3 { font-family: var(--serif); font-size: 21px; font-weight: 620; margin: 0; }
+  .modal-sub { color: var(--slate); font-size: 13.5px; margin: 0 0 20px; }
+  .field { margin-bottom: 14px; }
+  .field label { display: block; font-size: 13px; font-weight: 600; margin-bottom: 6px; }
+  .field input, .field select {
+    width: 100%;
+    border: 1px solid var(--card-border);
+    background: var(--paper);
+    color: var(--ink);
+    border-radius: 8px;
+    padding: 10px 12px;
+    font-family: var(--sans);
+    font-size: 14px;
+  }
+  .field-row { display: flex; gap: 12px; }
+  .field-row .field { flex: 1; }
+  .form-error { color: var(--amber-deep); font-size: 13px; margin: -6px 0 12px; display: none; }
+  .form-error.show { display: block; }
+  .submit-btn {
+    width: 100%;
+    background: var(--ink);
+    color: var(--paper);
+    border: none;
+    border-radius: 10px;
+    padding: 12px;
+    font-weight: 700;
+    font-size: 14.5px;
+    cursor: pointer;
+  }
+
+  .admin-head-row { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 18px; }
+  .logout-link { background: none; border: none; color: var(--slate); font-size: 13px; text-decoration: underline; cursor: pointer; padding: 0; }
+  .admin-summary { display: flex; gap: 12px; margin-bottom: 22px; flex-wrap: wrap; }
+  .summary-chip {
+    flex: 1; min-width: 140px;
+    background: var(--paper-dim);
+    border: 1px solid var(--card-border);
+    border-radius: 10px;
+    padding: 12px 14px;
+  }
+  .summary-chip b { display: block; font-family: var(--serif); font-size: 20px; font-weight: 620; }
+  .summary-chip span { font-size: 12.5px; color: var(--slate); }
+
+  .sales-table-wrap { overflow-x: auto; border: 1px solid var(--card-border); border-radius: 10px; margin-top: 18px; }
+  table.sales-table { width: 100%; border-collapse: collapse; font-size: 13px; min-width: 640px; }
+  table.sales-table th, table.sales-table td {
+    text-align: left;
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--card-border);
+    white-space: nowrap;
+  }
+  table.sales-table th { color: var(--slate); font-weight: 600; background: var(--paper-dim); }
+  table.sales-table td.wrap-cell { white-space: normal; }
+  .status-pill { border-radius: 5px; padding: 3px 10px; font-size: 12px; font-weight: 600; }
+  .status-lunas { background: rgba(28,122,69,0.15); color: #1c7a45; }
+  .status-pending { background: rgba(200,140,20,0.16); color: #9a6a10; }
+  .del-row-btn { background: none; border: none; color: var(--slate); text-decoration: underline; font-size: 12.5px; cursor: pointer; padding: 0; }
+  .sales-empty { text-align: center; color: var(--slate); padding: 30px 0; font-size: 14px; }
+  .admin-panel-actions { display: flex; gap: 10px; margin-top: 18px; flex-wrap: wrap; }
+  .btn-secondary {
+    background: transparent;
+    border: 1px solid var(--card-border);
+    color: var(--ink);
+    border-radius: 9px;
+    padding: 9px 14px;
+    font-weight: 600;
+    font-size: 13px;
+    cursor: pointer;
+  }
+  .storage-note { font-size: 12px; color: var(--slate); margin-top: 16px; line-height: 1.5; }
+
+  /* Admin tabs & panel management */
+  .admin-tabs { display: flex; gap: 6px; margin-bottom: 18px; flex-wrap: wrap; border-bottom: 1px solid var(--card-border); padding-bottom: 12px; }
+  .admin-tab {
+    border: 1px solid var(--card-border);
+    background: var(--paper-dim);
+    color: var(--slate);
+    border-radius: 7px;
+    padding: 7px 14px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: var(--sans);
+  }
+  .admin-tab.active { background: var(--indigo); color: #fff; border-color: var(--indigo); }
+  .product-admin-list { display: flex; flex-direction: column; gap: 10px; }
+  .product-admin-item {
+    display: flex; align-items: center; justify-content: space-between; gap: 12px;
+    border: 1px solid var(--card-border); border-radius: 9px; padding: 12px 14px; background: var(--paper-dim);
+    flex-wrap: wrap;
+  }
+  .product-admin-item .pai-name { font-weight: 600; font-size: 14.5px; }
+  .product-admin-item .pai-meta { font-size: 12.5px; color: var(--slate); }
+  .product-admin-item .pai-actions { display: flex; gap: 8px; flex: none; }
+  .variant-row { display: flex; gap: 8px; margin-bottom: 8px; align-items: center; }
+  .variant-row input {
+    flex: 1; border: 1px solid var(--card-border); background: var(--paper); color: var(--ink);
+    border-radius: 7px; padding: 8px 10px; font-family: var(--sans); font-size: 13px; min-width: 0;
+  }
+  .variant-row input.vr-price { max-width: 120px; }
+  .variant-row button { flex: none; background: none; border: none; color: var(--slate); font-size: 18px; cursor: pointer; padding: 0 6px; }
+  .card-icon.lainnya { background: rgba(92,108,98,0.15); color: var(--slate); }
+  .social-row { display: flex; gap: 10px; margin-top: 12px; }
+  .social-link {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 34px; height: 34px; border-radius: 999px;
+    border: 1px solid var(--card-border); color: var(--ink); text-decoration: none;
+  }
+  .social-link:hover { border-color: var(--indigo); color: var(--indigo); }
+  textarea.pf-textarea {
+    width: 100%; border: 1px solid var(--card-border); background: var(--paper); color: var(--ink);
+    border-radius: 8px; padding: 10px 12px; font-family: var(--sans); font-size: 14px; resize: vertical;
+  }
+
+  /* ===== Form input penjualan ===== */
+  .field .req { color: var(--amber-deep); }
+  .field .hint { display: block; font-size: 12px; font-weight: 400; color: var(--slate); margin-top: 5px; line-height: 1.45; }
+  .field.invalid input, .field.invalid select, .field.invalid .input-affix { border-color: var(--amber-deep); }
+  .field .input-affix {
+    display: flex; align-items: stretch;
+    border: 1px solid var(--card-border); background: var(--paper);
+    border-radius: 8px; overflow: hidden;
+  }
+  .field .input-affix > span { display: flex; align-items: center; padding-left: 12px; font-size: 14px; color: var(--slate); }
+  .field .input-affix input { border: none; border-radius: 0; background: transparent; }
+  .field .input-affix:focus-within { outline: 2px solid var(--indigo); outline-offset: 2px; }
+  .field .input-affix input:focus-visible { outline: none; }
+
+  .form-msg {
+    display: none;
+    margin: 4px 0 12px; padding: 10px 12px;
+    border: 1px solid var(--card-border); border-left-width: 4px; border-radius: 8px;
+    background: var(--paper-dim); color: var(--ink);
+    font-size: 13.5px; line-height: 1.45;
+  }
+  .form-msg.show { display: block; }
+  .form-msg.error { border-left-color: var(--amber-deep); background: rgba(184,36,28,0.08); }
+  .form-msg.ok { border-left-color: var(--indigo); background: rgba(28,122,69,0.10); }
+  .form-msg.info { border-left-color: var(--slate); }
+  .submit-btn:disabled { opacity: 0.6; cursor: progress; }
+
+  .img-pick { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+  .img-pick .img-status { font-size: 13px; color: var(--slate); }
+  .img-preview {
+    display: none; align-items: center; gap: 14px;
+    margin-top: 10px; padding: 10px;
+    border: 1px solid var(--card-border); border-radius: 10px; background: var(--paper-dim);
+  }
+  .img-preview.show { display: flex; }
+  .img-preview-info { font-size: 12.5px; color: var(--slate); min-width: 0; }
+  .img-preview-actions { display: flex; gap: 8px; margin-top: 8px; flex-wrap: wrap; }
+
+  .thumb-btn {
+    position: relative; display: block; flex: none;
+    width: 52px; height: 52px; padding: 0;
+    border: 1px solid var(--card-border); border-radius: 8px; overflow: hidden;
+    background: var(--paper-dim); cursor: zoom-in;
+  }
+  .thumb-btn.lg { width: 96px; height: 96px; }
+  .thumb-btn img { width: 100%; height: 100%; object-fit: cover; }
+  .thumb-btn::after {
+    content: ""; position: absolute; right: 4px; bottom: 4px;
+    width: 18px; height: 18px; border-radius: 999px;
+    background: rgba(19,38,27,0.78) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' stroke-linecap='round'%3E%3Ccircle cx='11' cy='11' r='7'/%3E%3Cpath d='M21 21l-4.3-4.3'/%3E%3C/svg%3E") center / 11px no-repeat;
+  }
+  .thumb-empty {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 52px; height: 52px; border: 1px dashed var(--card-border); border-radius: 8px; color: var(--slate);
+  }
+
+  table.listing-table { min-width: 690px; }
+  table.listing-table td.wrap-cell { min-width: 150px; }
+  .cell-sub { font-size: 12px; font-weight: 400; color: var(--slate); }
+  td.acct-cell { white-space: normal; min-width: 140px; }
+  td.acct-cell .acct-no { font-variant-numeric: tabular-nums; letter-spacing: 0.02em; }
+  td.link-cell a {
+    display: inline-block; max-width: 120px; vertical-align: bottom;
+    overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+    color: var(--indigo); text-decoration: underline;
+  }
+
+  /* ===== Lightbox gambar (zoom) ===== */
+  .lightbox {
+    position: fixed; inset: 0; z-index: 120;
+    display: none; flex-direction: column;
+    background: #08100c;
+  }
+  .lightbox.open { display: flex; }
+  .lb-bar {
+    display: flex; align-items: center; justify-content: space-between; gap: 12px;
+    padding: calc(10px + env(safe-area-inset-top, 0px)) 14px 10px;
+    color: #fff;
+  }
+  .lb-title { min-width: 0; font-size: 14px; font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .lb-tools { display: flex; align-items: center; gap: 6px; flex: none; }
+  .lb-tools button {
+    min-width: 38px; height: 38px; padding: 0 8px;
+    background: rgba(255,255,255,0.12); color: #fff;
+    border: 1px solid rgba(255,255,255,0.25); border-radius: 8px;
+    font-family: var(--sans); font-size: 18px; line-height: 1; cursor: pointer;
+  }
+  .lb-tools button:hover { background: rgba(255,255,255,0.22); }
+  .lb-tools .lb-reset { font-size: 13px; padding: 0 12px; }
+  .lb-tools button:focus-visible { outline-color: #fff; }
+  .lb-level { min-width: 46px; text-align: center; font-size: 13px; font-variant-numeric: tabular-nums; }
+  .lb-stage {
+    flex: 1; min-height: 0; position: relative; overflow: hidden;
+    display: flex; align-items: center; justify-content: center;
+    touch-action: none; user-select: none; -webkit-user-select: none; cursor: zoom-in;
+  }
+  .lb-stage.zoomed { cursor: grab; }
+  .lb-stage.dragging { cursor: grabbing; }
+  .lb-stage img {
+    max-width: 100%; max-height: 100%;
+    transform-origin: center center; will-change: transform;
+    pointer-events: none; -webkit-user-drag: none;
+  }
+  .lb-hint {
+    padding: 8px 14px calc(10px + env(safe-area-inset-bottom, 0px));
+    text-align: center; font-size: 12px; color: rgba(255,255,255,0.7);
+  }
+
+  @media (max-width: 760px) {
+    .hero-inner { grid-template-columns: 1fr; }
+    .hero-art { order: -1; max-width: 280px; margin: 0 auto; }
+    nav.site-nav { display: none; }
+    .trust-inner { grid-template-columns: 1fr; }
+    .admin-btn-label { display: none; }
+    .field-row { flex-direction: column; gap: 0; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; scroll-behavior: auto !important; }
+  }
+
+  :focus-visible { outline: 2px solid var(--indigo); outline-offset: 2px; }
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="site-bar">
+    <a href="#" class="brand">Karya<span class="dot">.</span>Digital</a>
+    <nav class="site-nav">
+      <a href="#produk">Produk</a>
+      <a href="#tentang">Cara Pesan</a>
+      <a href="#kontak">Kontak</a>
+    </nav>
+    <div class="header-actions">
+      <button class="admin-btn" id="adminOpenBtn" aria-label="Login admin">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+        <span class="admin-btn-label">Admin</span>
+      </button>
+      <button class="cart-btn" id="cartOpenBtn" aria-label="Buka keranjang">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+        Keranjang
+        <span class="cart-count" id="cartCount" style="display:none;">0</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="eyebrow-chip"><span class="swatch"></span>Dibuat &amp; dirawat langsung oleh developernya</div>
+      <h1 class="hero-title">Aplikasi jadi, siap pakai hari ini juga.</h1>
+      <p class="hero-sub">Karya Digital menjual aplikasi dan website yang sudah kami kembangkan sendiri — mulai dari pengelolaan rapor sekolah sampai desain undangan. Pilih paket, masukkan keranjang, pesan lewat WhatsApp.</p>
+      <div class="hero-ctas">
+        <a href="#produk" class="btn-primary">Lihat semua produk</a>
+        <a href="#tentang" class="btn-ghost">Cara pemesanan</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat"><b>2</b><span>aplikasi aktif</span></div>
+        <div class="stat"><b>100%</b><span>update tanpa biaya tambahan*</span></div>
+        <div class="stat"><b>1×24 jam</b><span>respons pemesanan</span></div>
+      </div>
+    </div>
+    <div class="hero-art" aria-hidden="true">
+      <svg viewBox="0 0 360 320" xmlns="http://www.w3.org/2000/svg">
+        <rect x="30" y="20" width="230" height="170" rx="12" fill="var(--card-bg)" stroke="var(--card-border)" stroke-width="2"/>
+        <rect x="30" y="20" width="230" height="30" rx="12" fill="var(--indigo)" opacity="0.9"/>
+        <circle cx="46" cy="35" r="4" fill="var(--paper)"/>
+        <circle cx="60" cy="35" r="4" fill="var(--paper)"/>
+        <circle cx="74" cy="35" r="4" fill="var(--paper)"/>
+        <rect x="48" y="66" width="180" height="10" rx="3" fill="var(--paper-dim)"/>
+        <rect x="48" y="86" width="140" height="10" rx="3" fill="var(--paper-dim)"/>
+        <rect x="48" y="112" width="60" height="42" rx="6" fill="var(--indigo)" opacity="0.14"/>
+        <rect x="118" y="112" width="60" height="42" rx="6" fill="var(--amber)" opacity="0.22"/>
+        <rect x="188" y="112" width="60" height="42" rx="6" fill="var(--indigo)" opacity="0.14"/>
+        <rect x="110" y="90" width="200" height="180" rx="12" fill="var(--card-bg)" stroke="var(--card-border)" stroke-width="2"/>
+        <rect x="110" y="90" width="200" height="26" rx="12" fill="var(--amber-deep)"/>
+        <circle cx="270" cy="150" r="34" fill="var(--amber)" opacity="0.25"/>
+        <path d="M254 150l12 12 22-24" stroke="var(--amber-deep)" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        <rect x="128" y="136" width="90" height="9" rx="3" fill="var(--paper-dim)"/>
+        <rect x="128" y="154" width="70" height="9" rx="3" fill="var(--paper-dim)"/>
+        <rect x="128" y="200" width="164" height="52" rx="8" fill="var(--paper-dim)"/>
+        <rect x="140" y="212" width="80" height="8" rx="3" fill="var(--card-border)"/>
+        <rect x="140" y="228" width="120" height="8" rx="3" fill="var(--card-border)"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<div class="tabs-row">
+  <div class="tabs" id="tabs">
+    <button class="tab active" data-filter="semua">Semua produk</button>
+    <button class="tab" data-filter="sekolah">Aplikasi sekolah</button>
+    <button class="tab" data-filter="undangan">Desain &amp; undangan</button>
+  </div>
+</div>
+
+<section class="catalog" id="produk">
+  <div class="wrap">
+    <h2>Katalog produk</h2>
+    <p class="lede">Semua harga adalah lisensi pemakaian, bukan sewa bulanan. Pilih paket sesuai kebutuhan Anda.</p>
+    <div class="grid" id="productGrid"></div>
+  </div>
+</section>
+
+<section class="trust" id="tentang">
+  <div class="trust-inner">
+    <div class="trust-item">
+      <span class="num">01</span>
+      <h4>Pilih dan masukkan keranjang</h4>
+      <p>Buka produk, pilih paket yang sesuai, lalu tekan "Tambah ke keranjang". Boleh gabung beberapa produk sekaligus.</p>
+    </div>
+    <div class="trust-item">
+      <span class="num">02</span>
+      <h4>Checkout via WhatsApp</h4>
+      <p>Tekan tombol checkout di keranjang — pesan otomatis berisi rincian pesanan Anda akan terisi, tinggal dikirim.</p>
+    </div>
+    <div class="trust-item">
+      <span class="num">03</span>
+      <h4>Bayar &amp; terima aplikasi</h4>
+      <p>Setelah pembayaran dikonfirmasi, kami kirim file aplikasi/link aktivasi beserta panduan pemakaiannya.</p>
+    </div>
+  </div>
+</section>
+
+<footer class="site" id="kontak">
+  <div class="footer-inner">
+    <div>
+      <a href="#" class="brand">Karya<span class="dot">.</span>Digital</a>
+      <p>Toko aplikasi &amp; website yang dikembangkan sendiri untuk kebutuhan sekolah dan acara Anda.</p>
+    </div>
+    <div class="contact">
+      <div style="margin-bottom:6px; color:var(--slate);">Hubungi kami</div>
+      <a href="#" id="waFooterLink">Chat via WhatsApp</a>
+      <div class="social-row" id="socialRow"></div>
+    </div>
+  </div>
+</footer>
+
+<div class="overlay" id="overlay"></div>
+<aside class="drawer" id="drawer" aria-label="Keranjang belanja">
+  <div class="drawer-head">
+    <h3>Keranjang Anda</h3>
+    <button class="close-btn" id="closeDrawerBtn" aria-label="Tutup keranjang">&times;</button>
+  </div>
+  <div class="drawer-body" id="drawerBody">
+    <!-- filled by JS -->
+  </div>
+  <div class="drawer-foot" id="drawerFoot">
+    <div class="sum-total"><span>Total</span><span id="cartTotal">Rp0</span></div>
+    <button class="checkout-btn" id="checkoutBtn" disabled>Checkout via WhatsApp</button>
+    <p class="checkout-note">Pesanan dikonfirmasi lewat chat WhatsApp, belum ada pembayaran otomatis.</p>
+  </div>
+</aside>
+
+<div class="modal-overlay" id="loginOverlay">
+  <div class="modal-box">
+    <div class="modal-head">
+      <h3>Login Admin</h3>
+      <button class="close-btn" id="closeLoginBtn" aria-label="Tutup">&times;</button>
+    </div>
+    <p class="modal-sub">Khusus pemilik toko, untuk mencatat data penjualan. Gunakan akun yang terdaftar di Firebase Authentication.</p>
+    <div class="field">
+      <label for="adminEmailInput">Email</label>
+      <input type="email" id="adminEmailInput" autocomplete="username" placeholder="admin@contoh.com">
+    </div>
+    <div class="field">
+      <label for="adminPassInput">Kata sandi</label>
+      <input type="password" id="adminPassInput" autocomplete="current-password" placeholder="Masukkan kata sandi">
+    </div>
+    <p class="form-error" id="loginError">Email atau kata sandi salah.</p>
+    <button class="submit-btn" id="loginSubmitBtn">Masuk</button>
+  </div>
+</div>
+
+<div class="modal-overlay" id="adminOverlay">
+  <div class="modal-box wide">
+    <div class="admin-head-row">
+      <div>
+        <h3 style="font-family:var(--serif); font-size:22px; font-weight:620; margin:0 0 4px;">Panel Admin</h3>
+        <p class="modal-sub" id="adminSignedInAs" style="margin:0; font-size:12.5px;"></p>
+      </div>
+      <div style="display:flex; align-items:center; gap:14px;">
+        <button class="logout-link" id="logoutBtn">Keluar</button>
+        <button class="close-btn" id="closeAdminBtn" aria-label="Tutup">&times;</button>
+      </div>
+    </div>
+
+    <p id="syncStatus" style="font-size:12.5px; color:var(--slate); margin:-6px 0 16px;">Memeriksa koneksi database...</p>
+
+    <div class="admin-tabs" id="adminTabs">
+      <button type="button" class="admin-tab active" data-tab="produk">Produk</button>
+      <button type="button" class="admin-tab" data-tab="penjualan">Input Penjualan</button>
+      <button type="button" class="admin-tab" data-tab="rekap">Rekap Penjual</button>
+      <button type="button" class="admin-tab" data-tab="kontak">Kontak &amp; Sosial</button>
+    </div>
+
+    <!-- ===== PANEL: PRODUK ===== -->
+    <div class="admin-panel" data-panel="produk">
+      <div class="admin-summary">
+        <div class="summary-chip"><b id="sumProduk">0</b><span>Produk aktif di katalog</span></div>
+      </div>
+      <div id="productListWrap" class="product-admin-list"></div>
+      <button type="button" class="btn-secondary" id="addProductBtn" style="margin-top:14px;">+ Tambah produk baru</button>
+
+      <form id="productForm" style="display:none; margin-top:18px; border-top:1px solid var(--card-border); padding-top:18px;">
+        <h4 id="productFormTitle" style="font-family:var(--serif); font-size:17px; margin:0 0 14px;">Tambah Produk</h4>
+        <div class="field-row">
+          <div class="field"><label for="pName">Nama produk</label><input type="text" id="pName" placeholder="Contoh: Aplikasi Absensi Sekolah"></div>
+          <div class="field"><label for="pCategory">Kategori</label><input type="text" id="pCategory" placeholder="Contoh: sekolah, undangan, umum" list="pCategoryList"><datalist id="pCategoryList"></datalist></div>
+        </div>
+        <div class="field-row">
+          <div class="field"><label for="pBadge">Label badge</label><input type="text" id="pBadge" placeholder="Contoh: Aplikasi Sekolah"></div>
+          <div class="field"><label for="pIcon">Ikon kartu</label>
+            <select id="pIcon">
+              <option value="school">Sekolah</option>
+              <option value="invite">Undangan</option>
+              <option value="lainnya">Lainnya</option>
+            </select>
+          </div>
+        </div>
+        <div class="field"><label for="pDesc">Deskripsi singkat</label><input type="text" id="pDesc" placeholder="Satu kalimat tentang produk ini"></div>
+        <div class="field"><label for="pFeatures">Fitur unggulan (satu baris per fitur)</label>
+          <textarea id="pFeatures" class="pf-textarea" rows="3" placeholder="Cetak otomatis semua jenjang&#10;Data tersimpan rapi &amp; mudah dicari"></textarea>
+        </div>
+        <div class="field-row">
+          <div class="field"><label for="pDemoUrl">Link demo (opsional)</label><input type="text" id="pDemoUrl" placeholder="https://..."></div>
+          <div class="field"><label for="pDemoLabel">Label link demo</label><input type="text" id="pDemoLabel" placeholder="Coba versi web"></div>
+        </div>
+
+        <div class="variant-label" style="margin:16px 0 8px;">Paket / varian harga</div>
+        <div id="variantRows"></div>
+        <button type="button" class="btn-secondary" id="addVariantRowBtn">+ Tambah paket</button>
+
+        <p class="form-error" id="productFormError">Lengkapi nama produk, badge, deskripsi, dan minimal satu paket dengan harga.</p>
+        <div class="admin-panel-actions" style="margin-top:18px;">
+          <button type="submit" class="submit-btn" style="width:auto; padding:12px 20px;">Simpan produk</button>
+          <button type="button" class="btn-secondary" id="cancelProductBtn">Batal</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- ===== PANEL: INPUT PENJUALAN ===== -->
+    <div class="admin-panel" data-panel="penjualan" style="display:none;">
+      <div class="admin-summary">
+        <div class="summary-chip"><b id="sumItems">0</b><span>Produk tercatat</span></div>
+        <div class="summary-chip"><b id="sumHarga">-</b><span>Rentang harga</span></div>
+        <div class="summary-chip"><b id="sumRek">0</b><span>Rekening penjual</span></div>
+      </div>
+
+      <form id="salesForm" novalidate>
+        <div class="field-row">
+          <div class="field">
+            <label for="saleName">Nama produk <span class="req">*</span></label>
+            <input type="text" id="saleName" maxlength="120" autocomplete="off" placeholder="Contoh: Aplikasi Rapor Digital">
+          </div>
+          <div class="field">
+            <label for="saleUnit">Satuan <span class="req">*</span></label>
+            <input type="text" id="saleUnit" maxlength="30" autocomplete="off" list="saleUnitList" placeholder="Contoh: Lisensi">
+            <datalist id="saleUnitList">
+              <option value="Lisensi"></option>
+              <option value="Paket"></option>
+              <option value="Unit"></option>
+              <option value="Aplikasi"></option>
+              <option value="Website"></option>
+              <option value="Lembar"></option>
+              <option value="Bulan"></option>
+              <option value="Tahun"></option>
+            </datalist>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="salePrice">Harga <span class="req">*</span></label>
+          <div class="input-affix"><span>Rp</span><input type="text" id="salePrice" inputmode="numeric" autocomplete="off" placeholder="Contoh: 150.000"></div>
+          <small class="hint">Harga untuk 1 satuan. Pemisah ribuan ditambahkan otomatis.</small>
+        </div>
+
+        <div class="field">
+          <label for="saleLink">Link upload aplikasi dan website</label>
+          <input type="text" id="saleLink" inputmode="url" autocomplete="off" placeholder="Contoh: https://drive.google.com/...">
+          <small class="hint">Alamat tempat aplikasi atau website ini diunggah. Boleh dikosongkan dulu.</small>
+        </div>
+
+        <div class="field-row">
+          <div class="field">
+            <label for="saleAccNo">No. rekening penjual <span class="req">*</span></label>
+            <input type="text" id="saleAccNo" inputmode="numeric" autocomplete="off" maxlength="24" placeholder="Hanya angka">
+          </div>
+          <div class="field">
+            <label for="saleAccName">Nama rekening <span class="req">*</span></label>
+            <input type="text" id="saleAccName" autocomplete="off" maxlength="80" placeholder="Nama sesuai buku tabungan">
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="saleBank">Jenis bank <span class="req">*</span></label>
+          <select id="saleBank">
+            <option value="">Pilih bank atau dompet digital</option>
+            <optgroup label="Bank">
+              <option value="BCA">BCA</option>
+              <option value="BRI">BRI</option>
+              <option value="BNI">BNI</option>
+              <option value="Mandiri">Mandiri</option>
+              <option value="BSI">BSI (Bank Syariah Indonesia)</option>
+              <option value="BTN">BTN</option>
+              <option value="CIMB Niaga">CIMB Niaga</option>
+              <option value="Permata">Permata</option>
+              <option value="Danamon">Danamon</option>
+              <option value="Bank Jatim">Bank Jatim</option>
+              <option value="Jago">Bank Jago</option>
+              <option value="SeaBank">SeaBank</option>
+              <option value="Jenius (BTPN)">Jenius (BTPN)</option>
+            </optgroup>
+            <optgroup label="Dompet digital">
+              <option value="DANA">DANA</option>
+              <option value="OVO">OVO</option>
+              <option value="GoPay">GoPay</option>
+              <option value="ShopeePay">ShopeePay</option>
+              <option value="LinkAja">LinkAja</option>
+            </optgroup>
+            <option value="__other">Lainnya (ketik sendiri)</option>
+          </select>
+          <div id="saleBankOtherWrap" hidden style="margin-top:8px;">
+            <input type="text" id="saleBankOther" maxlength="40" autocomplete="off" placeholder="Nama bank">
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="saleImgPick">Gambar model aplikasi</label>
+          <div class="img-pick">
+            <button type="button" class="btn-secondary" id="saleImgPick">Pilih gambar</button>
+            <span class="img-status" id="saleImgStatus">Belum ada gambar</span>
+            <input type="file" id="saleImage" accept="image/*" hidden>
+          </div>
+          <div class="img-preview" id="saleImgPreview">
+            <button type="button" class="thumb-btn lg" id="saleImgPreviewBtn" aria-label="Perbesar gambar"><img id="saleImgPreviewImg" alt="Pratinjau gambar model aplikasi"></button>
+            <div class="img-preview-info">
+              <div id="saleImgMeta"></div>
+              <div class="img-preview-actions">
+                <button type="button" class="btn-secondary" id="saleImgZoomBtn">Perbesar (zoom)</button>
+                <button type="button" class="btn-secondary" id="saleImgRemove">Hapus gambar</button>
+              </div>
+            </div>
+          </div>
+          <small class="hint">Tangkapan layar atau mockup aplikasi (JPG, PNG, WebP). Ukurannya dikecilkan otomatis. Klik gambar untuk memperbesar.</small>
+        </div>
+
+        <div class="form-msg" id="salesFormMsg" role="status" aria-live="polite"></div>
+        <button type="submit" class="submit-btn" id="salesSubmitBtn">Simpan data penjualan</button>
+      </form>
+
+      <div class="sales-table-wrap">
+        <table class="sales-table listing-table">
+          <thead>
+            <tr>
+              <th>Gambar</th>
+              <th>Nama produk</th>
+              <th>Harga</th>
+              <th>Link</th>
+              <th>Rekening penjual</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="salesTableBody"></tbody>
+        </table>
+      </div>
+      <div id="salesEmptyMsg" class="sales-empty" style="display:none;">Belum ada data penjualan. Isi formulir di atas, lalu klik Simpan data penjualan.</div>
+
+      <div class="admin-panel-actions" id="exportActions">
+        <button type="button" class="btn-secondary" id="exportCsvBtn">Unduh CSV</button>
+        <span id="exportStatus" style="font-size:12.5px; color:var(--slate);"></span>
+      </div>
+      <p class="storage-note">Data penjualan, produk, dan kontak tersimpan di Firebase Realtime Database dan otomatis tersinkron di semua perangkat. Login memakai akun Firebase Authentication (email &amp; kata sandi) — pastikan rules database sudah dibatasi hanya untuk pengguna yang login (lihat catatan dari developer).</p>
+    </div>
+
+    <!-- ===== PANEL: REKAP PENJUAL ===== -->
+    <div class="admin-panel" data-panel="rekap" style="display:none;">
+      <p class="modal-sub" style="margin:0 0 14px;">Rekap jumlah produk dan total harga per rekening penjual, dihitung dari data penjualan yang sudah dicatat.</p>
+      <div class="sales-table-wrap">
+        <table class="sales-table">
+          <thead>
+            <tr>
+              <th>Nama rekening</th>
+              <th>Bank</th>
+              <th>No. rekening</th>
+              <th>Jumlah produk</th>
+              <th>Total harga</th>
+            </tr>
+          </thead>
+          <tbody id="rekapTableBody"></tbody>
+        </table>
+      </div>
+      <div id="rekapEmptyMsg" class="sales-empty" style="display:none;">Belum ada data penjualan untuk direkap.</div>
+    </div>
+
+    <!-- ===== PANEL: KONTAK & SOSIAL ===== -->
+    <div class="admin-panel" data-panel="kontak" style="display:none;">
+      <p class="modal-sub" style="margin:0 0 14px;">Nomor &amp; akun di bawah ini akan tampil otomatis di bagian bawah website, dan nomor WhatsApp dipakai untuk tombol checkout.</p>
+      <form id="kontakForm">
+        <div class="field">
+          <label for="kWhatsapp">Nomor WhatsApp (format 62xxxxxxxxxx, tanpa +)</label>
+          <input type="text" id="kWhatsapp" placeholder="6281234567890">
+        </div>
+        <div class="field">
+          <label for="kInstagram">Instagram (username atau link)</label>
+          <input type="text" id="kInstagram" placeholder="@namatoko atau https://instagram.com/namatoko">
+        </div>
+        <div class="field">
+          <label for="kFacebook">Facebook (username atau link)</label>
+          <input type="text" id="kFacebook" placeholder="namatoko atau https://facebook.com/namatoko">
+        </div>
+        <div class="field">
+          <label for="kTiktok">TikTok (username atau link)</label>
+          <input type="text" id="kTiktok" placeholder="@namatoko">
+        </div>
+        <p class="form-error" id="kontakFormError">Isi minimal nomor WhatsApp ya.</p>
+        <div style="display:flex; align-items:center; gap:12px;">
+          <button type="submit" class="submit-btn" style="width:auto; padding:12px 20px;">Simpan kontak</button>
+          <span id="kontakSaveStatus" style="font-size:12.5px; color:var(--slate);"></span>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Pratinjau gambar">
+  <div class="lb-bar">
+    <span class="lb-title" id="lbTitle"></span>
+    <div class="lb-tools">
+      <button type="button" id="lbOut" aria-label="Perkecil">&minus;</button>
+      <span class="lb-level" id="lbLevel">100%</span>
+      <button type="button" id="lbIn" aria-label="Perbesar">+</button>
+      <button type="button" id="lbReset" class="lb-reset">Reset</button>
+      <button type="button" id="lbClose" aria-label="Tutup">&times;</button>
+    </div>
+  </div>
+  <div class="lb-stage" id="lbStage"><img id="lbImg" alt="" draggable="false"></div>
+  <div class="lb-hint">Scroll atau cubit untuk zoom &middot; seret untuk menggeser &middot; klik dua kali untuk memperbesar</div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/firebase@10.7.1/firebase-app-compat.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/firebase@10.7.1/firebase-auth-compat.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/firebase@10.7.1/firebase-database-compat.js"></script>
+<script>
+(function(){
+  // ---- CONFIGURASI TOKO ----
+  // Ganti nomor di bawah dengan nomor WhatsApp Anda, format 62xxxxxxxxxx (tanpa +, tanpa 0 di depan)
+  var WHATSAPP_NUMBER = "6281234567890";
+
+  var PRODUCTS_SEED = [
+    {
+      id: "rapor-digital",
+      name: "Rapor Digital",
+      category: "sekolah",
+      badge: "Aplikasi Sekolah",
+      icon: "school",
+      desc: "Kelola nilai, rapor, dan data siswa untuk semua jenjang dalam satu aplikasi.",
+      features: [
+        "Cetak rapor otomatis semua jenjang",
+        "Data nilai tersimpan rapi & mudah dicari",
+        "Tersedia versi desktop maupun web"
+      ],
+      demoUrl: "https://siakadsdntanjung-glitch.github.io/RAPORT-SEMUA-JENJANG/",
+      demoLabel: "Coba versi web",
+      variants: [
+        { id: "desktop", name: "Paket Desktop", price: 150000, note: "Lisensi sekali bayar" },
+        { id: "web", name: "Paket Web", price: 100000, note: "Akses online" }
+      ]
+    },
+    {
+      id: "undangan-studio",
+      name: "Undangan Studio",
+      category: "undangan",
+      badge: "Desain & Undangan",
+      icon: "invite",
+      desc: "Desain dan cetak undangan pernikahan maupun acara dengan template dan ornamen lengkap.",
+      features: [
+        "Template & ornamen bingkai foto lengkap",
+        "Garis panduan area aman & bleed cetak",
+        "3 undangan per lembar, isi bisa beda nama"
+      ],
+      demoUrl: null,
+      demoLabel: null,
+      variants: [
+        { id: "dasar", name: "Paket Dasar", price: 75000, note: "Template standar" },
+        { id: "premium", name: "Paket Premium", price: 150000, note: "Ornamen lengkap + edit blur foto" }
+      ]
+    }
+  ];
+
+  var PRODUCTS = PRODUCTS_SEED.slice();
+
+  var cart = []; // {productId, variantId, qty}
+
+  function loadCart(){
+    try {
+      var raw = localStorage.getItem("karyadigital_cart");
+      if (raw) cart = JSON.parse(raw);
+    } catch(e) { cart = []; }
+  }
+  function saveCart(){
+    try { localStorage.setItem("karyadigital_cart", JSON.stringify(cart)); } catch(e) {}
+  }
+
+  function fmtRupiah(n){
+    return "Rp" + n.toLocaleString("id-ID");
+  }
+
+  function getProduct(id){ return PRODUCTS.filter(function(p){ return p.id === id; })[0]; }
+  function getVariant(product, vid){ return product.variants.filter(function(v){ return v.id === vid; })[0]; }
+
+  var iconSvg = {
+    school: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10L12 5 2 10l10 5 10-5v6"></path><path d="M6 12v5c0 1.5 3 3 6 3s6-1.5 6-3v-5"></path></svg>',
+    invite: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="M3 7l9 6 9-6"></path></svg>',
+    lainnya: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8l-9-5-9 5 9 5 9-5z"></path><path d="M3 8v8l9 5 9-5V8"></path></svg>'
+  };
+  var checkSvg = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg>';
+  var iconStyleMap = {
+    school: { bg: "rgba(28,122,69,0.12)", color: "var(--indigo)" },
+    invite: { bg: "rgba(184,36,28,0.14)", color: "var(--amber-deep)" },
+    lainnya: { bg: "rgba(92,108,98,0.15)", color: "var(--slate)" }
+  };
+  function iconStyle(icon){ return iconStyleMap[icon] || iconStyleMap.lainnya; }
+  var iconSvgSocial = {
+    instagram: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.3" cy="6.7" r="1"></circle></svg>',
+    facebook: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h-2a4 4 0 0 0-4 4v3H6v4h3v7h4v-7h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>',
+    tiktok: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3v11.5a3.5 3.5 0 1 1-3.5-3.5"></path><path d="M14 3c0 2.8 2.2 5 5 5"></path></svg>'
+  };
+
+  var selectedVariant = {}; // productId -> variantId
+  PRODUCTS.forEach(function(p){ selectedVariant[p.id] = (p.variants && p.variants[0]) ? p.variants[0].id : null; });
+
+  var grid = document.getElementById("productGrid");
+  var currentFilter = "semua";
+
+  function buildCategoryTabs(){
+    var cats = [];
+    PRODUCTS.forEach(function(p){
+      if (p.category && cats.indexOf(p.category) === -1) cats.push(p.category);
+    });
+    if (cats.indexOf(currentFilter) === -1 && currentFilter !== "semua") currentFilter = "semua";
+    var html = '<button class="tab' + (currentFilter === "semua" ? " active" : "") + '" data-filter="semua">Semua produk</button>';
+    cats.forEach(function(c){
+      var label = c.charAt(0).toUpperCase() + c.slice(1);
+      html += '<button class="tab' + (currentFilter === c ? " active" : "") + '" data-filter="' + c + '">' + label + '</button>';
+    });
+    document.getElementById("tabs").innerHTML = html;
+  }
+
+  function renderGrid(){
+    grid.innerHTML = "";
+    var list = PRODUCTS.filter(function(p){ return (currentFilter === "semua" || p.category === currentFilter) && p.variants && p.variants.length > 0; });
+    list.forEach(function(p){
+      var card = document.createElement("div");
+      card.className = "card";
+
+      var featHtml = (p.features || []).map(function(f){
+        return '<li>' + checkSvg + '<span>' + f + '</span></li>';
+      }).join("");
+
+      var variantHtml = p.variants.map(function(v){
+        var sel = selectedVariant[p.id] === v.id ? " selected" : "";
+        return '<button type="button" class="variant-pill' + sel + '" data-product="' + p.id + '" data-variant="' + v.id + '">' +
+          '<span class="vname">' + v.name + '</span>' +
+          '<span class="vprice">' + fmtRupiah(v.price) + (v.note ? ' &middot; ' + v.note : '') + '</span>' +
+          '</button>';
+      }).join("");
+
+      var demoHtml = p.demoUrl ? '<a class="demo-link" href="' + p.demoUrl + '" target="_blank" rel="noopener">' + (p.demoLabel || "Lihat demo") + ' &rarr;</a>' : "";
+
+      card.innerHTML =
+        '<div class="card-top">' +
+          '<div class="card-icon ' + p.icon + '">' + iconSvg[p.icon] + '</div>' +
+          '<span class="badge">' + p.badge + '</span>' +
+        '</div>' +
+        '<h3>' + p.name + '</h3>' +
+        '<p class="desc">' + p.desc + '</p>' +
+        '<ul class="feat">' + featHtml + '</ul>' +
+        '<div class="variant-group">' +
+          '<div class="variant-label">Pilih paket</div>' +
+          '<div class="variant-options">' + variantHtml + '</div>' +
+        '</div>' +
+        '<div class="card-bottom">' +
+          '<div class="price-now" id="price-' + p.id + '">' + fmtRupiah(getVariant(p, selectedVariant[p.id]).price) + '</div>' +
+          '<button class="add-btn" data-add="' + p.id + '">Tambah ke keranjang</button>' +
+        '</div>' +
+        demoHtml;
+
+      grid.appendChild(card);
+    });
+
+    grid.querySelectorAll(".variant-pill").forEach(function(btn){
+      btn.addEventListener("click", function(){
+        var pid = btn.getAttribute("data-product");
+        var vid = btn.getAttribute("data-variant");
+        selectedVariant[pid] = vid;
+        renderGrid();
+      });
+    });
+    grid.querySelectorAll("[data-add]").forEach(function(btn){
+      btn.addEventListener("click", function(){
+        addToCart(btn.getAttribute("data-add"), selectedVariant[btn.getAttribute("data-add")]);
+      });
+    });
+  }
+
+  document.getElementById("tabs").addEventListener("click", function(e){
+    var btn = e.target.closest(".tab");
+    if (!btn) return;
+    document.querySelectorAll(".tab").forEach(function(t){ t.classList.remove("active"); });
+    btn.classList.add("active");
+    currentFilter = btn.getAttribute("data-filter");
+    renderGrid();
+  });
+
+  function addToCart(productId, variantId){
+    var existing = cart.filter(function(c){ return c.productId === productId && c.variantId === variantId; })[0];
+    if (existing) {
+      existing.qty += 1;
+    } else {
+      cart.push({ productId: productId, variantId: variantId, qty: 1 });
+    }
+    saveCart();
+    renderCart();
+    openDrawer();
+  }
+
+  function changeQty(productId, variantId, delta){
+    var item = cart.filter(function(c){ return c.productId === productId && c.variantId === variantId; })[0];
+    if (!item) return;
+    item.qty += delta;
+    if (item.qty <= 0) {
+      cart = cart.filter(function(c){ return c !== item; });
+    }
+    saveCart();
+    renderCart();
+  }
+
+  function removeItem(productId, variantId){
+    cart = cart.filter(function(c){ return !(c.productId === productId && c.variantId === variantId); });
+    saveCart();
+    renderCart();
+  }
+
+  var drawerBody = document.getElementById("drawerBody");
+  var cartTotalEl = document.getElementById("cartTotal");
+  var cartCountEl = document.getElementById("cartCount");
+  var checkoutBtn = document.getElementById("checkoutBtn");
+
+  function renderCart(){
+    var totalQty = cart.reduce(function(s,c){ return s + c.qty; }, 0);
+    if (totalQty > 0) {
+      cartCountEl.style.display = "flex";
+      cartCountEl.textContent = totalQty;
+    } else {
+      cartCountEl.style.display = "none";
+    }
+
+    if (cart.length === 0) {
+      drawerBody.innerHTML = '<div class="cart-empty">Keranjang masih kosong.<br>Yuk pilih produk dulu.</div>';
+      cartTotalEl.textContent = "Rp0";
+      checkoutBtn.disabled = true;
+      return;
+    }
+
+    var total = 0;
+    drawerBody.innerHTML = cart.map(function(c){
+      var p = getProduct(c.productId);
+      var v = getVariant(p, c.variantId);
+      var lineTotal = v.price * c.qty;
+      total += lineTotal;
+      return '<div class="cart-item">' +
+        '<div class="ci-icon ' + p.icon + '" style="background:' + iconStyle(p.icon).bg + '; color:' + iconStyle(p.icon).color + ';">' + iconSvg[p.icon] + '</div>' +
+        '<div class="ci-info">' +
+          '<b>' + p.name + '</b>' +
+          '<span class="ci-variant">' + v.name + '</span>' +
+          '<div class="ci-row">' +
+            '<div class="qty-ctrl">' +
+              '<button data-dec="' + p.id + '|' + v.id + '">&minus;</button>' +
+              '<span>' + c.qty + '</span>' +
+              '<button data-inc="' + p.id + '|' + v.id + '">+</button>' +
+            '</div>' +
+            '<div class="ci-price">' + fmtRupiah(lineTotal) + '</div>' +
+          '</div>' +
+          '<button class="ci-remove" data-remove="' + p.id + '|' + v.id + '">Hapus</button>' +
+        '</div>' +
+      '</div>';
+    }).join("");
+
+    cartTotalEl.textContent = fmtRupiah(total);
+    checkoutBtn.disabled = false;
+
+    drawerBody.querySelectorAll("[data-inc]").forEach(function(btn){
+      btn.addEventListener("click", function(){
+        var parts = btn.getAttribute("data-inc").split("|");
+        changeQty(parts[0], parts[1], 1);
+      });
+    });
+    drawerBody.querySelectorAll("[data-dec]").forEach(function(btn){
+      btn.addEventListener("click", function(){
+        var parts = btn.getAttribute("data-dec").split("|");
+        changeQty(parts[0], parts[1], -1);
+      });
+    });
+    drawerBody.querySelectorAll("[data-remove]").forEach(function(btn){
+      btn.addEventListener("click", function(){
+        var parts = btn.getAttribute("data-remove").split("|");
+        removeItem(parts[0], parts[1]);
+      });
+    });
+  }
+
+  var overlay = document.getElementById("overlay");
+  var drawer = document.getElementById("drawer");
+  function openDrawer(){
+    overlay.classList.add("open");
+    drawer.classList.add("open");
+  }
+  function closeDrawer(){
+    overlay.classList.remove("open");
+    drawer.classList.remove("open");
+  }
+  document.getElementById("cartOpenBtn").addEventListener("click", openDrawer);
+  document.getElementById("closeDrawerBtn").addEventListener("click", closeDrawer);
+  overlay.addEventListener("click", closeDrawer);
+
+  checkoutBtn.addEventListener("click", function(){
+    if (cart.length === 0) return;
+    var lines = ["Halo, saya ingin memesan produk berikut dari Karya Digital:", ""];
+    var total = 0;
+    cart.forEach(function(c){
+      var p = getProduct(c.productId);
+      var v = getVariant(p, c.variantId);
+      var lineTotal = v.price * c.qty;
+      total += lineTotal;
+      lines.push("- " + p.name + " (" + v.name + ") x" + c.qty + " = " + fmtRupiah(lineTotal));
+    });
+    lines.push("");
+    lines.push("Total: " + fmtRupiah(total));
+    lines.push("");
+    lines.push("Mohon info langkah pembayaran selanjutnya. Terima kasih.");
+    var message = encodeURIComponent(lines.join("\n"));
+    var url = "https://wa.me/" + getWhatsAppNumber() + "?text=" + message;
+    window.open(url, "_blank");
+  });
+
+  document.getElementById("waFooterLink").addEventListener("click", function(e){
+    e.preventDefault();
+    window.open("https://wa.me/" + getWhatsAppNumber(), "_blank");
+  });
+
+  loadCart();
+  renderGrid();
+  renderCart();
+
+  // ---------------- FIREBASE (AUTH + REALTIME DATABASE) ----------------
+  var firebaseConfig = {
+    apiKey: "AIzaSyAYD0dTapip_-C2dk5WpyqZvJZwrpMLKqA",
+    authDomain: "sdntanjung-4af13.firebaseapp.com",
+    databaseURL: "https://sdntanjung-4af13-default-rtdb.firebaseio.com",
+    projectId: "sdntanjung-4af13",
+    storageBucket: "sdntanjung-4af13.firebasestorage.app",
+    messagingSenderId: "858895297495",
+    appId: "1:858895297495:web:e2d181a631712306873992",
+    measurementId: "G-EZ5BCQ0GQ7"
+  };
+
+  var salesRef = null;
+  var productsRef = null;
+  var kontakRef = null;
+  var firebaseReady = false;
+  var firebaseAuth = null;
+  try {
+    if (window.firebase) {
+      firebase.initializeApp(firebaseConfig);
+      salesRef = firebase.database().ref("toko_digital/penjualan");
+      productsRef = firebase.database().ref("toko_digital/produk");
+      kontakRef = firebase.database().ref("toko_digital/kontak");
+      firebaseAuth = firebase.auth();
+      firebaseReady = true;
+    }
+  } catch(e) { firebaseReady = false; }
+
+  // Status koneksi ke Realtime Database (dipakai untuk memberi pesan jelas saat simpan gagal)
+  var dbConnected = false;
+  if (firebaseReady) {
+    try {
+      firebase.database().ref(".info/connected").on("value", function(snap){ dbConnected = (snap.val() === true); });
+    } catch(e) {}
+  }
+
+  // ---------------- HELPER UMUM ----------------
+  function esc(s){
+    return String(s == null ? "" : s)
+      .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;").replace(/'/g, "&#39;");
+  }
+  function safeUrl(u){
+    try {
+      var x = new URL(String(u || ""));
+      return (x.protocol === "http:" || x.protocol === "https:") ? x.href : "";
+    } catch(e) { return ""; }
+  }
+  function safeImg(src){
+    return (typeof src === "string" && /^data:image\/(jpeg|png|webp|gif);base64,/.test(src)) ? src : "";
+  }
+  function fmtDate(ts){
+    var n = Number(ts);
+    if (!n) return "-";
+    var d = new Date(n);
+    return isNaN(d.getTime()) ? "-" : d.toLocaleDateString("id-ID", { day: "numeric", month: "short", year: "numeric" });
+  }
+  function describeFirebaseError(err){
+    var code = err && (err.code || err.message) ? String(err.code || err.message) : "";
+    if (/permission[_ -]?denied/i.test(code)) {
+      return "ditolak oleh aturan database (PERMISSION_DENIED). Pastikan Anda masih login sebagai admin dan rules Firebase mengizinkan pengguna yang login menulis ke data ini.";
+    }
+    if (/network|disconnect|unavailable|offline/i.test(code)) {
+      return "koneksi ke database terputus. Periksa internet Anda.";
+    }
+    if (/auth\//i.test(code)) {
+      return "masalah autentikasi (" + code + "). Coba keluar lalu masuk lagi.";
+    }
+    return code ? ("kode kesalahan: " + code + ".") : "penyebab tidak diketahui.";
+  }
+
+  // ---------------- KONTAK & SOSIAL MEDIA ----------------
+  var KONTAK_DEFAULT = { whatsapp: WHATSAPP_NUMBER, instagram: "", facebook: "", tiktok: "" };
+  var kontak = Object.assign({}, KONTAK_DEFAULT);
+
+  function getWhatsAppNumber(){
+    return (kontak.whatsapp || WHATSAPP_NUMBER).toString().replace(/[^0-9]/g, "");
+  }
+  function cacheKontakLocally(){
+    try { localStorage.setItem("karyadigital_kontak_cache", JSON.stringify(kontak)); } catch(e) {}
+  }
+  function loadCachedKontakLocally(){
+    try {
+      var raw = localStorage.getItem("karyadigital_kontak_cache");
+      if (raw) kontak = Object.assign({}, KONTAK_DEFAULT, JSON.parse(raw));
+    } catch(e) {}
+  }
+  function toSocialUrl(type, value){
+    if (!value) return null;
+    value = String(value).trim();
+    if (!value) return null;
+    if (/^https?:\/\//i.test(value)) return value;
+    var handle = value.replace(/^@/, "");
+    if (type === "instagram") return "https://instagram.com/" + handle;
+    if (type === "facebook") return "https://facebook.com/" + handle;
+    if (type === "tiktok") return "https://tiktok.com/@" + handle;
+    return null;
+  }
+  function renderSocialRow(){
+    var row = document.getElementById("socialRow");
+    if (!row) return;
+    var items = [];
+    var ig = toSocialUrl("instagram", kontak.instagram);
+    var fb = toSocialUrl("facebook", kontak.facebook);
+    var tt = toSocialUrl("tiktok", kontak.tiktok);
+    if (ig) items.push('<a class="social-link" href="' + ig + '" target="_blank" rel="noopener" aria-label="Instagram">' + iconSvgSocial.instagram + '</a>');
+    if (fb) items.push('<a class="social-link" href="' + fb + '" target="_blank" rel="noopener" aria-label="Facebook">' + iconSvgSocial.facebook + '</a>');
+    if (tt) items.push('<a class="social-link" href="' + tt + '" target="_blank" rel="noopener" aria-label="TikTok">' + iconSvgSocial.tiktok + '</a>');
+    row.innerHTML = items.join("");
+  }
+  function fillKontakForm(){
+    var elW = document.getElementById("kWhatsapp");
+    if (!elW) return;
+    elW.value = kontak.whatsapp || "";
+    document.getElementById("kInstagram").value = kontak.instagram || "";
+    document.getElementById("kFacebook").value = kontak.facebook || "";
+    document.getElementById("kTiktok").value = kontak.tiktok || "";
+  }
+
+  var kontakHandler = null;
+  function startKontakListener(){
+    if (!firebaseReady || !kontakRef || kontakHandler) return;
+    kontakHandler = kontakRef.on("value", function(snapshot){
+      var val = snapshot.val();
+      kontak = Object.assign({}, KONTAK_DEFAULT, val || {});
+      cacheKontakLocally();
+      renderSocialRow();
+      fillKontakForm();
+    }, function(){
+      kontakHandler = null; // dibatalkan server; dipasang ulang setelah login
+      loadCachedKontakLocally();
+      renderSocialRow();
+      fillKontakForm();
+    });
+  }
+  if (firebaseReady && kontakRef) {
+    startKontakListener();
+  } else {
+    loadCachedKontakLocally();
+    renderSocialRow();
+  }
+
+  var kontakForm = document.getElementById("kontakForm");
+  if (kontakForm) {
+    kontakForm.addEventListener("submit", function(e){
+      e.preventDefault();
+      var wa = document.getElementById("kWhatsapp").value.trim().replace(/[^0-9]/g, "");
+      var ig = document.getElementById("kInstagram").value.trim();
+      var fb = document.getElementById("kFacebook").value.trim();
+      var tt = document.getElementById("kTiktok").value.trim();
+      var errEl = document.getElementById("kontakFormError");
+      var statusEl = document.getElementById("kontakSaveStatus");
+      if (!wa) {
+        errEl.classList.add("show");
+        statusEl.textContent = "";
+        return;
+      }
+      errEl.classList.remove("show");
+      var data = { whatsapp: wa, instagram: ig, facebook: fb, tiktok: tt };
+      statusEl.textContent = "Menyimpan...";
+      if (firebaseReady && kontakRef) {
+        kontakRef.set(data).then(function(){
+          statusEl.textContent = "Tersimpan.";
+        }).catch(function(err){
+          statusEl.textContent = "Gagal menyimpan — " + describeFirebaseError(err);
+        });
+      } else {
+        kontak = Object.assign({}, KONTAK_DEFAULT, data);
+        cacheKontakLocally();
+        renderSocialRow();
+        statusEl.textContent = "Tersimpan di perangkat ini.";
+      }
+    });
+  }
+
+  // ---------------- PRODUK (KATALOG DINAMIS) ----------------
+  function cacheProductsLocally(){
+    try { localStorage.setItem("karyadigital_products_cache", JSON.stringify(PRODUCTS)); } catch(e) {}
+  }
+  function loadCachedProductsLocally(){
+    try {
+      var raw = localStorage.getItem("karyadigital_products_cache");
+      PRODUCTS = raw ? JSON.parse(raw) : PRODUCTS_SEED.slice();
+    } catch(e) { PRODUCTS = PRODUCTS_SEED.slice(); }
+  }
+  function afterProductsUpdated(){
+    PRODUCTS.forEach(function(p){
+      if (!selectedVariant[p.id]) selectedVariant[p.id] = (p.variants && p.variants[0]) ? p.variants[0].id : null;
+    });
+    buildCategoryTabs();
+    renderGrid();
+    renderProductAdminList();
+  }
+
+  var productsHandler = null;
+  function startProductsListener(){
+    if (!firebaseReady || !productsRef || productsHandler) return;
+    productsHandler = productsRef.on("value", function(snapshot){
+      var val = snapshot.val() || {};
+      var keys = Object.keys(val);
+      PRODUCTS = keys.map(function(key){
+        var rec = val[key] || {};
+        rec.id = key;
+        if (!rec.variants) rec.variants = [];
+        if (!rec.features) rec.features = [];
+        return rec;
+      });
+      cacheProductsLocally();
+      afterProductsUpdated();
+    }, function(){
+      productsHandler = null; // dibatalkan server; dipasang ulang setelah login
+      loadCachedProductsLocally();
+      afterProductsUpdated();
+    });
+  }
+
+  if (firebaseReady && productsRef) {
+    startProductsListener();
+    productsRef.once("value").then(function(snap){
+      if (!snap.exists()) {
+        PRODUCTS_SEED.forEach(function(p){
+          var obj = {};
+          for (var k in p) { if (k !== "id") obj[k] = p[k]; }
+          productsRef.push(obj);
+        });
+      }
+    }).catch(function(){});
+  } else {
+    loadCachedProductsLocally();
+    afterProductsUpdated();
+  }
+
+  // ---------------- MANAJEMEN PRODUK OLEH ADMIN ----------------
+  function renderProductAdminList(){
+    var wrap = document.getElementById("productListWrap");
+    if (!wrap) return;
+    var sumEl = document.getElementById("sumProduk");
+    if (sumEl) sumEl.textContent = PRODUCTS.length;
+    if (PRODUCTS.length === 0) {
+      wrap.innerHTML = '<p style="color:var(--slate); font-size:13.5px; margin:0;">Belum ada produk. Tambahkan produk pertama Anda.</p>';
+      return;
+    }
+    wrap.innerHTML = PRODUCTS.map(function(p){
+      var hargaRange = (p.variants || []).map(function(v){ return fmtRupiah(v.price); }).join(" / ") || "Belum ada paket";
+      return '<div class="product-admin-item">' +
+        '<div><div class="pai-name">' + p.name + '</div><div class="pai-meta">' + (p.badge || "-") + ' &middot; ' + hargaRange + '</div></div>' +
+        '<div class="pai-actions">' +
+          '<button type="button" class="btn-secondary" data-edit-product="' + p.id + '">Edit</button>' +
+          '<button type="button" class="btn-secondary" data-del-product="' + p.id + '">Hapus</button>' +
+        '</div>' +
+      '</div>';
+    }).join("");
+    wrap.querySelectorAll("[data-edit-product]").forEach(function(btn){
+      btn.addEventListener("click", function(){ openProductForm(btn.getAttribute("data-edit-product")); });
+    });
+    wrap.querySelectorAll("[data-del-product]").forEach(function(btn){
+      btn.addEventListener("click", function(){
+        var id = btn.getAttribute("data-del-product");
+        if (!confirm("Hapus produk ini dari katalog?")) return;
+        if (firebaseReady && productsRef) {
+          productsRef.child(id).remove().catch(function(){
+            alert("Gagal menghapus produk — periksa koneksi internet.");
+          });
+        } else {
+          PRODUCTS = PRODUCTS.filter(function(p){ return p.id !== id; });
+          cacheProductsLocally();
+          afterProductsUpdated();
+        }
+      });
+    });
+  }
+
+  var productForm = document.getElementById("productForm");
+  var PRODUCT_ERR_DEFAULT = document.getElementById("productFormError").textContent;
+  var editingProductId = null;
+  var variantRowSeq = 0;
+
+  function addVariantRow(data){
+    variantRowSeq++;
+    var row = document.createElement("div");
+    row.className = "variant-row";
+    var esc = function(s){ return (s == null ? "" : String(s)).replace(/"/g, "&quot;"); };
+    row.innerHTML =
+      '<input type="text" class="vr-name" placeholder="Nama paket" value="' + esc(data && data.name) + '">' +
+      '<input type="number" class="vr-price" placeholder="Harga" value="' + (data && data.price ? data.price : "") + '">' +
+      '<input type="text" class="vr-note" placeholder="Catatan (opsional)" value="' + esc(data && data.note) + '">' +
+      '<button type="button" title="Hapus paket" aria-label="Hapus paket">&times;</button>';
+    row.querySelector("button").addEventListener("click", function(){ row.remove(); });
+    document.getElementById("variantRows").appendChild(row);
+  }
+  function collectVariantRows(){
+    var rows = document.querySelectorAll("#variantRows .variant-row");
+    var out = [];
+    rows.forEach(function(r, idx){
+      var name = r.querySelector(".vr-name").value.trim();
+      var price = parseInt(r.querySelector(".vr-price").value, 10);
+      var note = r.querySelector(".vr-note").value.trim();
+      if (name && price > 0) {
+        out.push({ id: "v" + (idx + 1) + "_" + Date.now().toString(36), name: name, price: price, note: note });
+      }
+    });
+    return out;
+  }
+  function updateCategoryDatalist(){
+    var cats = [];
+    PRODUCTS.forEach(function(p){ if (p.category && cats.indexOf(p.category) === -1) cats.push(p.category); });
+    var dl = document.getElementById("pCategoryList");
+    if (dl) dl.innerHTML = cats.map(function(c){ return '<option value="' + c + '">'; }).join("");
+  }
+  function openProductForm(id){
+    editingProductId = id;
+    document.getElementById("productFormTitle").textContent = id ? "Edit Produk" : "Tambah Produk";
+    document.getElementById("productFormError").classList.remove("show");
+    document.getElementById("variantRows").innerHTML = "";
+    if (id) {
+      var p = getProduct(id);
+      document.getElementById("pName").value = p.name || "";
+      document.getElementById("pCategory").value = p.category || "";
+      document.getElementById("pBadge").value = p.badge || "";
+      document.getElementById("pIcon").value = p.icon || "lainnya";
+      document.getElementById("pDesc").value = p.desc || "";
+      document.getElementById("pFeatures").value = (p.features || []).join("\n");
+      document.getElementById("pDemoUrl").value = p.demoUrl || "";
+      document.getElementById("pDemoLabel").value = p.demoLabel || "";
+      (p.variants || []).forEach(function(v){ addVariantRow(v); });
+    } else {
+      ["pName","pCategory","pBadge","pDesc","pFeatures","pDemoUrl","pDemoLabel"].forEach(function(fid){ document.getElementById(fid).value = ""; });
+      document.getElementById("pIcon").value = "lainnya";
+      addVariantRow();
+    }
+    updateCategoryDatalist();
+    productForm.style.display = "block";
+    productForm.scrollIntoView({ behavior: "smooth", block: "nearest" });
+  }
+  function closeProductForm(){
+    productForm.style.display = "none";
+    editingProductId = null;
+  }
+  document.getElementById("addProductBtn").addEventListener("click", function(){ openProductForm(null); });
+  document.getElementById("cancelProductBtn").addEventListener("click", closeProductForm);
+  document.getElementById("addVariantRowBtn").addEventListener("click", function(){ addVariantRow(); });
+
+  productForm.addEventListener("submit", function(e){
+    e.preventDefault();
+    var name = document.getElementById("pName").value.trim();
+    var badge = document.getElementById("pBadge").value.trim();
+    var desc = document.getElementById("pDesc").value.trim();
+    var category = document.getElementById("pCategory").value.trim() || "umum";
+    var icon = document.getElementById("pIcon").value;
+    var features = document.getElementById("pFeatures").value.split("\n").map(function(s){ return s.trim(); }).filter(Boolean);
+    var demoUrl = document.getElementById("pDemoUrl").value.trim() || null;
+    var demoLabel = document.getElementById("pDemoLabel").value.trim() || (demoUrl ? "Lihat demo" : null);
+    var variants = collectVariantRows();
+    var errEl = document.getElementById("productFormError");
+
+    if (!name || !badge || !desc || variants.length === 0) {
+      errEl.textContent = PRODUCT_ERR_DEFAULT;
+      errEl.classList.add("show");
+      return;
+    }
+    errEl.classList.remove("show");
+
+    var productData = { name: name, category: category, badge: badge, icon: icon, desc: desc, features: features, demoUrl: demoUrl, demoLabel: demoLabel, variants: variants };
+
+    if (firebaseReady && productsRef) {
+      var pBtn = productForm.querySelector('button[type="submit"]');
+      var pDone = function(){ pBtn.disabled = false; pBtn.textContent = "Simpan produk"; };
+      var pFail = function(err){
+        pDone();
+        errEl.textContent = "Produk belum tersimpan — " + describeFirebaseError(err);
+        errEl.classList.add("show");
+      };
+      pBtn.disabled = true;
+      pBtn.textContent = "Menyimpan...";
+      try {
+        var task = editingProductId ? productsRef.child(editingProductId).set(productData) : productsRef.push(productData);
+        task.then(function(){ pDone(); closeProductForm(); }, pFail);
+      } catch(err) {
+        pFail(err);
+      }
+    } else {
+      if (editingProductId) {
+        PRODUCTS = PRODUCTS.map(function(p){
+          if (p.id !== editingProductId) return p;
+          var merged = { id: p.id };
+          for (var k in productData) merged[k] = productData[k];
+          return merged;
+        });
+      } else {
+        productData.id = "p" + Date.now().toString(36);
+        PRODUCTS.push(productData);
+      }
+      cacheProductsLocally();
+      afterProductsUpdated();
+      closeProductForm();
+    }
+  });
+
+  var sales = [];        // hanya data produk penjualan (kind === "listing")
+  var syncStatusEl = null; // set once DOM is ready, see below
+
+  function setSyncStatus(text){
+    if (!syncStatusEl) syncStatusEl = document.getElementById("syncStatus");
+    if (syncStatusEl) syncStatusEl.textContent = text;
+  }
+
+  // Listener data penjualan HARUS dipasang setelah admin login. Rules database biasanya menolak baca
+  // untuk pengunjung yang belum login, dan Firebase otomatis membatalkan listener yang ditolak itu
+  // (tidak dipasang ulang sendiri). Itu yang membuat tabel tidak pernah ter-update setelah "Simpan".
+  var salesHandler = null;
+  function startSalesListener(){
+    if (!firebaseReady || !salesRef || salesHandler) return;
+    setSyncStatus("Menyambungkan ke database...");
+    salesHandler = salesRef.on("value", function(snapshot){
+      var val = snapshot.val() || {};
+      sales = Object.keys(val).map(function(key){
+        var rec = val[key] || {};
+        rec.id = key;
+        return rec;
+      }).filter(function(r){ return r && r.kind === "listing"; });
+      setSyncStatus("Tersambung — data tersinkron otomatis di semua perangkat.");
+      renderSalesTable();
+    }, function(error){
+      salesHandler = null; // listener dibatalkan server; akan dipasang ulang saat login / buka panel / simpan
+      var code = (error && error.code) ? error.code : "offline";
+      setSyncStatus("Tidak bisa membaca data penjualan (" + code + "). " +
+        (/permission/i.test(code)
+          ? "Pastikan rules Firebase mengizinkan pengguna yang login membaca toko_digital/penjualan."
+          : "Periksa koneksi internet."));
+    });
+  }
+  function stopSalesListener(){
+    if (salesHandler && salesRef) { try { salesRef.off("value", salesHandler); } catch(e) {} }
+    salesHandler = null;
+    sales = [];
+    renderSalesTable();
+  }
+
+  var loginOverlay = document.getElementById("loginOverlay");
+  var adminOverlay = document.getElementById("adminOverlay");
+  var adminEmailInput = document.getElementById("adminEmailInput");
+  var adminPassInput = document.getElementById("adminPassInput");
+  var loginError = document.getElementById("loginError");
+  var adminBtnLabel = document.querySelector("#adminOpenBtn .admin-btn-label");
+
+  function currentAdminUser(){
+    return (firebaseReady && firebaseAuth) ? firebaseAuth.currentUser : null;
+  }
+
+  if (firebaseReady && firebaseAuth) {
+    firebaseAuth.onAuthStateChanged(function(user){
+      if (adminBtnLabel) adminBtnLabel.textContent = user ? "Admin ✓" : "Admin";
+      if (user) {
+        // Pasang listener SETELAH login (lihat penjelasan di startSalesListener)
+        startSalesListener();
+        startProductsListener();
+        startKontakListener();
+      } else {
+        stopSalesListener();
+      }
+    });
+  }
+
+  document.getElementById("adminOpenBtn").addEventListener("click", function(){
+    if (!firebaseReady || !firebaseAuth) {
+      alert("Login admin belum bisa dipakai karena koneksi ke Firebase gagal dimuat. Periksa koneksi internet lalu muat ulang halaman.");
+      return;
+    }
+    if (currentAdminUser()) {
+      openAdminPanel();
+    } else {
+      loginError.classList.remove("show");
+      adminEmailInput.value = "";
+      adminPassInput.value = "";
+      loginOverlay.classList.add("open");
+      setTimeout(function(){ adminEmailInput.focus(); }, 50);
+    }
+  });
+  document.getElementById("closeLoginBtn").addEventListener("click", function(){
+    loginOverlay.classList.remove("open");
+  });
+  loginOverlay.addEventListener("click", function(e){
+    if (e.target === loginOverlay) loginOverlay.classList.remove("open");
+  });
+
+  function attemptLogin(){
+    var email = adminEmailInput.value.trim();
+    var pass = adminPassInput.value;
+    var loginBtn = document.getElementById("loginSubmitBtn");
+    loginError.classList.remove("show");
+    if (!email || !pass) {
+      loginError.textContent = "Isi email dan kata sandi dulu ya.";
+      loginError.classList.add("show");
+      return;
+    }
+    loginBtn.disabled = true;
+    loginBtn.textContent = "Memeriksa...";
+    firebaseAuth.signInWithEmailAndPassword(email, pass).then(function(){
+      loginBtn.disabled = false;
+      loginBtn.textContent = "Masuk";
+      loginOverlay.classList.remove("open");
+      openAdminPanel();
+    }).catch(function(err){
+      loginBtn.disabled = false;
+      loginBtn.textContent = "Masuk";
+      var code = err && err.code;
+      if (code === "auth/invalid-email") {
+        loginError.textContent = "Format email tidak valid.";
+      } else if (code === "auth/user-not-found" || code === "auth/wrong-password" || code === "auth/invalid-credential") {
+        loginError.textContent = "Email atau kata sandi salah.";
+      } else if (code === "auth/too-many-requests") {
+        loginError.textContent = "Terlalu banyak percobaan gagal. Coba lagi beberapa saat lagi.";
+      } else {
+        loginError.textContent = "Gagal masuk (" + (code || "unknown") + "). Coba lagi.";
+      }
+      loginError.classList.add("show");
+    });
+  }
+  document.getElementById("loginSubmitBtn").addEventListener("click", attemptLogin);
+  adminPassInput.addEventListener("keydown", function(e){
+    if (e.key === "Enter") attemptLogin();
+  });
+  adminEmailInput.addEventListener("keydown", function(e){
+    if (e.key === "Enter") attemptLogin();
+  });
+
+  document.getElementById("logoutBtn").addEventListener("click", function(){
+    if (firebaseReady && firebaseAuth) firebaseAuth.signOut();
+    adminOverlay.classList.remove("open");
+  });
+  document.getElementById("closeAdminBtn").addEventListener("click", function(){
+    adminOverlay.classList.remove("open");
+  });
+  adminOverlay.addEventListener("click", function(e){
+    if (e.target === adminOverlay) adminOverlay.classList.remove("open");
+  });
+
+  document.getElementById("adminTabs").addEventListener("click", function(e){
+    var btn = e.target.closest(".admin-tab");
+    if (!btn) return;
+    document.querySelectorAll(".admin-tab").forEach(function(t){ t.classList.remove("active"); });
+    btn.classList.add("active");
+    var tab = btn.getAttribute("data-tab");
+    document.querySelectorAll(".admin-panel").forEach(function(p){
+      p.style.display = (p.getAttribute("data-panel") === tab) ? "block" : "none";
+    });
+    if (tab === "rekap") renderRekapTable();
+    if (tab === "kontak") fillKontakForm();
+    if (tab === "produk") renderProductAdminList();
+  });
+
+  function openAdminPanel(){
+    startSalesListener();
+    var signedInEl = document.getElementById("adminSignedInAs");
+    var user = currentAdminUser();
+    if (signedInEl) signedInEl.textContent = user ? ("Masuk sebagai " + user.email) : "";
+    renderSalesTable();
+    renderProductAdminList();
+    renderRekapTable();
+    fillKontakForm();
+    document.querySelectorAll(".admin-tab").forEach(function(t){ t.classList.toggle("active", t.getAttribute("data-tab") === "produk"); });
+    document.querySelectorAll(".admin-panel").forEach(function(p){ p.style.display = (p.getAttribute("data-panel") === "produk") ? "block" : "none"; });
+    adminOverlay.classList.add("open");
+  }
+
+  // ---------------- REKAP PENJUAL ----------------
+  function renderRekapTable(){
+    var tbody = document.getElementById("rekapTableBody");
+    var emptyMsg = document.getElementById("rekapEmptyMsg");
+    if (!tbody) return;
+    var map = {};
+    sales.forEach(function(s){
+      var key = [s.bank, s.accountNumber, s.accountName].join("|");
+      if (!map[key]) map[key] = { accountName: s.accountName || "-", bank: s.bank || "-", accountNumber: s.accountNumber || "-", count: 0, total: 0 };
+      map[key].count += 1;
+      map[key].total += Number(s.price) || 0;
+    });
+    var rows = Object.keys(map).map(function(k){ return map[k]; })
+      .sort(function(a,b){ return (b.count - a.count) || (b.total - a.total); });
+    if (rows.length === 0) {
+      tbody.innerHTML = "";
+      if (emptyMsg) emptyMsg.style.display = "block";
+      return;
+    }
+    if (emptyMsg) emptyMsg.style.display = "none";
+    tbody.innerHTML = rows.map(function(r){
+      return '<tr>' +
+        '<td>' + esc(r.accountName) + '</td>' +
+        '<td>' + esc(r.bank) + '</td>' +
+        '<td>' + esc(r.accountNumber) + '</td>' +
+        '<td>' + r.count + '</td>' +
+        '<td>' + fmtRupiah(r.total) + '</td>' +
+      '</tr>';
+    }).join("");
+  }
+
+  // ---------------- TABEL DATA PENJUALAN ----------------
+  function shortLink(url){
+    return url.replace(/^https?:\/\//i, "").replace(/\/$/, "");
+  }
+  function saleRowHtml(s){
+    var img = safeImg(s.image);
+    var url = safeUrl(s.link);
+    var thumb = img
+      ? '<button type="button" class="thumb-btn" data-zoom="' + esc(s.id) + '" title="Klik untuk memperbesar" aria-label="Perbesar gambar ' + esc(s.productName) + '"><img src="' + esc(img) + '" alt=""></button>'
+      : '<span class="thumb-empty" title="Tidak ada gambar">&ndash;</span>';
+    var link = url
+      ? '<a href="' + esc(url) + '" target="_blank" rel="noopener noreferrer" title="' + esc(url) + '">' + esc(shortLink(url)) + '</a>'
+      : '&ndash;';
+    return '<tr>' +
+      '<td>' + thumb + '</td>' +
+      '<td class="wrap-cell"><b>' + esc(s.productName) + '</b><div class="cell-sub">Dicatat ' + esc(fmtDate(s.createdAt)) + '</div></td>' +
+      '<td><b>' + fmtRupiah(Number(s.price) || 0) + '</b><div class="cell-sub">per ' + esc(s.unit || "-") + '</div></td>' +
+      '<td class="link-cell">' + link + '</td>' +
+      '<td class="acct-cell"><b>' + esc(s.bank || "-") + '</b><div class="acct-no">' + esc(s.accountNumber || "-") + '</div><div class="cell-sub">a.n. ' + esc(s.accountName || "-") + '</div></td>' +
+      '<td><button type="button" class="del-row-btn" data-del="' + esc(s.id) + '">Hapus</button></td>' +
+    '</tr>';
+  }
+
+  function renderSalesTable(){
+    var tbody = document.getElementById("salesTableBody");
+    var emptyMsg = document.getElementById("salesEmptyMsg");
+    if (!tbody) return;
+    var sorted = sales.slice().sort(function(a,b){ return (Number(b.createdAt) || 0) - (Number(a.createdAt) || 0); });
+
+    if (sorted.length === 0) {
+      tbody.innerHTML = "";
+      emptyMsg.style.display = "block";
+    } else {
+      emptyMsg.style.display = "none";
+      tbody.innerHTML = sorted.map(saleRowHtml).join("");
+    }
+
+    var prices = sales.map(function(s){ return Number(s.price) || 0; });
+    var accounts = {};
+    sales.forEach(function(s){ accounts[(s.bank || "") + "|" + (s.accountNumber || "")] = 1; });
+    var hargaText = "-";
+    if (prices.length) {
+      var lo = Math.min.apply(null, prices), hi = Math.max.apply(null, prices);
+      hargaText = (lo === hi) ? fmtRupiah(lo) : (fmtRupiah(lo) + " – " + fmtRupiah(hi));
+    }
+    document.getElementById("sumItems").textContent = sales.length;
+    document.getElementById("sumHarga").textContent = hargaText;
+    document.getElementById("sumRek").textContent = Object.keys(accounts).length;
+    renderRekapTable();
+  }
+
+  document.getElementById("salesTableBody").addEventListener("click", function(e){
+    var zoomBtn = e.target.closest("[data-zoom]");
+    if (zoomBtn) {
+      var id = zoomBtn.getAttribute("data-zoom");
+      var rec = sales.filter(function(s){ return s.id === id; })[0];
+      if (rec) openLightbox(safeImg(rec.image), rec.productName);
+      return;
+    }
+    var delBtn = e.target.closest("[data-del]");
+    if (delBtn) {
+      if (!confirm("Hapus data penjualan ini?")) return;
+      var delId = delBtn.getAttribute("data-del");
+      try {
+        salesRef.child(delId).remove().catch(function(err){
+          setSyncStatus("Gagal menghapus data — " + describeFirebaseError(err));
+        });
+        // listener "value" otomatis memperbarui tabel
+      } catch(err) {
+        setSyncStatus("Gagal menghapus data — " + describeFirebaseError(err));
+      }
+    }
+  });
+
+  // ---------------- LIGHTBOX GAMBAR (ZOOM) ----------------
+  var lb = document.getElementById("lightbox");
+  var lbStage = document.getElementById("lbStage");
+  var lbImg = document.getElementById("lbImg");
+  var lbLevel = document.getElementById("lbLevel");
+  var lbTitle = document.getElementById("lbTitle");
+  var lbCloseBtn = document.getElementById("lbClose");
+  var LB_MIN = 1, LB_MAX = 6;
+  var lbScale = 1, lbTx = 0, lbTy = 0, lbLastFocus = null;
+  var lbPointers = {}, lbPinch = null, lbLastTap = { t: 0, x: 0, y: 0 };
+
+  function lbClampPan(){
+    var mx = Math.max(0, (lbImg.offsetWidth * lbScale - lbStage.clientWidth) / 2);
+    var my = Math.max(0, (lbImg.offsetHeight * lbScale - lbStage.clientHeight) / 2);
+    lbTx = Math.max(-mx, Math.min(mx, lbTx));
+    lbTy = Math.max(-my, Math.min(my, lbTy));
+  }
+  function lbApply(){
+    lbClampPan();
+    lbImg.style.transform = "translate(" + lbTx + "px," + lbTy + "px) scale(" + lbScale + ")";
+    lbLevel.textContent = Math.round(lbScale * 100) + "%";
+    lbStage.classList.toggle("zoomed", lbScale > 1.01);
+  }
+  // titik (px,py) relatif terhadap pusat area gambar
+  function lbStagePoint(clientX, clientY){
+    var r = lbStage.getBoundingClientRect();
+    return { x: clientX - (r.left + r.width / 2), y: clientY - (r.top + r.height / 2) };
+  }
+  function lbZoomTo(next, px, py){
+    next = Math.max(LB_MIN, Math.min(LB_MAX, next));
+    var ratio = next / lbScale;
+    lbTx = px - (px - lbTx) * ratio;
+    lbTy = py - (py - lbTy) * ratio;
+    lbScale = next;
+    if (lbScale <= LB_MIN + 0.001) { lbScale = LB_MIN; lbTx = 0; lbTy = 0; }
+    lbApply();
+  }
+  function openLightbox(src, title){
+    if (!src) return;
+    lbLastFocus = document.activeElement;
+    lbScale = 1; lbTx = 0; lbTy = 0; lbPointers = {}; lbPinch = null;
+    lbImg.style.transform = "";
+    lbLevel.textContent = "100%";
+    lbStage.classList.remove("zoomed", "dragging");
+    lbTitle.textContent = title || "";
+    lbImg.alt = title ? ("Gambar model aplikasi: " + title) : "Gambar model aplikasi";
+    lbImg.src = src;
+    lb.classList.add("open");
+    lbCloseBtn.focus();
+  }
+  function closeLightbox(){
+    if (!lb.classList.contains("open")) return;
+    lb.classList.remove("open");
+    lbImg.removeAttribute("src");
+    if (lbLastFocus && lbLastFocus.focus) { try { lbLastFocus.focus(); } catch(e) {} }
+  }
+
+  document.getElementById("lbIn").addEventListener("click", function(){ lbZoomTo(lbScale * 1.4, 0, 0); });
+  document.getElementById("lbOut").addEventListener("click", function(){ lbZoomTo(lbScale / 1.4, 0, 0); });
+  document.getElementById("lbReset").addEventListener("click", function(){ lbZoomTo(1, 0, 0); });
+  lbCloseBtn.addEventListener("click", closeLightbox);
+  document.addEventListener("keydown", function(e){
+    if (!lb.classList.contains("open")) return;
+    if (e.key === "Escape") { closeLightbox(); e.stopPropagation(); }
+    else if (e.key === "+" || e.key === "=") lbZoomTo(lbScale * 1.4, 0, 0);
+    else if (e.key === "-") lbZoomTo(lbScale / 1.4, 0, 0);
+    else if (e.key === "0") lbZoomTo(1, 0, 0);
+  });
+  lbStage.addEventListener("wheel", function(e){
+    e.preventDefault();
+    var dy = e.deltaMode === 1 ? e.deltaY * 16 : e.deltaY;
+    var p = lbStagePoint(e.clientX, e.clientY);
+    lbZoomTo(lbScale * Math.exp(-dy * (e.ctrlKey ? 0.01 : 0.0018)), p.x, p.y);
+  }, { passive: false });
+
+  function lbPts(){ return Object.keys(lbPointers).map(function(k){ return lbPointers[k]; }); }
+  lbStage.addEventListener("pointerdown", function(e){
+    if (e.pointerType === "mouse" && e.button !== 0) return;
+    try { lbStage.setPointerCapture(e.pointerId); } catch(err) {}
+    lbPointers[e.pointerId] = { x: e.clientX, y: e.clientY, sx: e.clientX, sy: e.clientY, t: Date.now(), moved: false };
+    var pts = lbPts();
+    if (pts.length === 2) {
+      lbPinch = { dist: Math.hypot(pts[0].x - pts[1].x, pts[0].y - pts[1].y), mx: (pts[0].x + pts[1].x) / 2, my: (pts[0].y + pts[1].y) / 2 };
+      pts.forEach(function(p){ p.moved = true; });
+    }
+    if (lbScale > 1.01) lbStage.classList.add("dragging");
+  });
+  lbStage.addEventListener("pointermove", function(e){
+    var p = lbPointers[e.pointerId];
+    if (!p) return;
+    var dx = e.clientX - p.x, dy = e.clientY - p.y;
+    p.x = e.clientX; p.y = e.clientY;
+    if (Math.hypot(e.clientX - p.sx, e.clientY - p.sy) > 8) p.moved = true;
+    var pts = lbPts();
+    if (pts.length >= 2 && lbPinch) {
+      var a = pts[0], b = pts[1];
+      var dist = Math.hypot(a.x - b.x, a.y - b.y);
+      var mx = (a.x + b.x) / 2, my = (a.y + b.y) / 2;
+      var c = lbStagePoint(mx, my);
+      if (lbPinch.dist > 0) lbZoomTo(lbScale * (dist / lbPinch.dist), c.x, c.y);
+      lbTx += mx - lbPinch.mx; lbTy += my - lbPinch.my;
+      lbApply();
+      lbPinch.dist = dist; lbPinch.mx = mx; lbPinch.my = my;
+    } else if (pts.length === 1 && lbScale > 1.01) {
+      lbTx += dx; lbTy += dy;
+      lbApply();
+    }
+  });
+  function lbPointerEnd(e){
+    var p = lbPointers[e.pointerId];
+    if (!p) return;
+    delete lbPointers[e.pointerId];
+    try { lbStage.releasePointerCapture(e.pointerId); } catch(err) {}
+    var remaining = Object.keys(lbPointers).length;
+    if (remaining < 2) lbPinch = null;
+    if (!remaining) lbStage.classList.remove("dragging");
+    var now = Date.now();
+    if (e.type !== "pointerup" || p.moved || remaining || now - p.t > 350) return;
+    // ketukan: di luar gambar = tutup, dua ketukan cepat = zoom in/out
+    var r = lbImg.getBoundingClientRect();
+    var inside = e.clientX >= r.left && e.clientX <= r.right && e.clientY >= r.top && e.clientY <= r.bottom;
+    if (!inside) { closeLightbox(); return; }
+    if (now - lbLastTap.t < 320 && Math.hypot(e.clientX - lbLastTap.x, e.clientY - lbLastTap.y) < 30) {
+      lbLastTap.t = 0;
+      if (lbScale > 1.05) lbZoomTo(1, 0, 0);
+      else { var c = lbStagePoint(e.clientX, e.clientY); lbZoomTo(2.5, c.x, c.y); }
+    } else {
+      lbLastTap = { t: now, x: e.clientX, y: e.clientY };
+    }
+  }
+  lbStage.addEventListener("pointerup", lbPointerEnd);
+  lbStage.addEventListener("pointercancel", lbPointerEnd);
+
+  // ---------------- FORM INPUT PENJUALAN ----------------
+  var salesForm = document.getElementById("salesForm");
+  var salesMsgEl = document.getElementById("salesFormMsg");
+  var salesSubmitBtn = document.getElementById("salesSubmitBtn");
+  var SALES_SUBMIT_LABEL = "Simpan data penjualan";
+  var salesSaving = false;
+  var salesMsgTimer = null;
+
+  function showSalesMsg(kind, text, autoHideMs){
+    clearTimeout(salesMsgTimer);
+    salesMsgEl.textContent = text;
+    salesMsgEl.className = "form-msg show " + kind;
+    if (autoHideMs) salesMsgTimer = setTimeout(hideSalesMsg, autoHideMs);
+    if (salesMsgEl.scrollIntoView) salesMsgEl.scrollIntoView({ block: "nearest", behavior: "smooth" });
+  }
+  function hideSalesMsg(){
+    clearTimeout(salesMsgTimer);
+    salesMsgEl.className = "form-msg";
+    salesMsgEl.textContent = "";
+  }
+  function setSalesSaving(on){
+    salesSaving = on;
+    salesSubmitBtn.disabled = on;
+    salesSubmitBtn.textContent = on ? "Menyimpan..." : SALES_SUBMIT_LABEL;
+  }
+  function clearInvalid(){
+    salesForm.querySelectorAll(".field.invalid").forEach(function(f){ f.classList.remove("invalid"); });
+  }
+  function markInvalid(ids){
+    ids.forEach(function(id){
+      var f = document.getElementById(id).closest(".field");
+      if (f) f.classList.add("invalid");
+    });
+  }
+  function onFieldEdited(e){
+    var f = e.target.closest && e.target.closest(".field");
+    if (f) f.classList.remove("invalid");
+  }
+  salesForm.addEventListener("input", onFieldEdited);
+  salesForm.addEventListener("change", onFieldEdited);
+
+  // Harga: pemisah ribuan otomatis, posisi kursor dijaga
+  var salePriceEl = document.getElementById("salePrice");
+  salePriceEl.addEventListener("input", function(){
+    var raw = salePriceEl.value;
+    var pos = salePriceEl.selectionStart || 0;
+    var digitsBefore = raw.slice(0, pos).replace(/\D/g, "").length;
+    var digits = raw.replace(/\D/g, "").replace(/^0+/, "").slice(0, 12);
+    var formatted = digits.replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+    salePriceEl.value = formatted;
+    var np = 0, count = 0;
+    if (digitsBefore > 0) {
+      np = formatted.length;
+      for (var i = 0; i < formatted.length; i++) {
+        if (/\d/.test(formatted.charAt(i))) count++;
+        if (count === digitsBefore) { np = i + 1; break; }
+      }
+    }
+    try { salePriceEl.setSelectionRange(np, np); } catch(e) {}
+  });
+
+  // No. rekening: hanya angka
+  var saleAccNoEl = document.getElementById("saleAccNo");
+  saleAccNoEl.addEventListener("input", function(){
+    var v = saleAccNoEl.value.replace(/\D/g, "");
+    if (v !== saleAccNoEl.value) saleAccNoEl.value = v;
+  });
+
+  // Jenis bank "Lainnya"
+  var saleBankEl = document.getElementById("saleBank");
+  var saleBankOtherWrap = document.getElementById("saleBankOtherWrap");
+  var saleBankOtherEl = document.getElementById("saleBankOther");
+  saleBankEl.addEventListener("change", function(){
+    var other = saleBankEl.value === "__other";
+    saleBankOtherWrap.hidden = !other;
+    if (other) saleBankOtherEl.focus();
+  });
+
+  // Gambar model aplikasi: dikompres di browser, disimpan sebagai data URL
+  var saleImageData = "";
+  var saleImageName = "";
+  var saleImageBusy = false;
+  var saleImageToken = 0;
+  var saleImageInput = document.getElementById("saleImage");
+  var saleImgPreview = document.getElementById("saleImgPreview");
+  var saleImgPreviewImg = document.getElementById("saleImgPreviewImg");
+  var saleImgStatus = document.getElementById("saleImgStatus");
+  var saleImgMeta = document.getElementById("saleImgMeta");
+
+  function processImageFile(file){
+    return new Promise(function(resolve, reject){
+      if (!file || !/^image\//i.test(file.type || "")) { reject(new Error("not-image")); return; }
+      if (file.size > 20 * 1024 * 1024) { reject(new Error("too-big")); return; }
+      var reader = new FileReader();
+      reader.onerror = function(){ reject(new Error("read")); };
+      reader.onload = function(){
+        var img = new Image();
+        img.onerror = function(){ reject(new Error("decode")); };
+        img.onload = function(){
+          try {
+            var w = img.naturalWidth, h = img.naturalHeight;
+            if (!w || !h) { reject(new Error("decode")); return; }
+            var steps = [[1280, 0.82], [1280, 0.7], [1024, 0.7], [1024, 0.55], [800, 0.55], [640, 0.5]];
+            var out = "";
+            for (var i = 0; i < steps.length; i++) {
+              var ratio = Math.min(1, steps[i][0] / Math.max(w, h));
+              var cw = Math.max(1, Math.round(w * ratio)), ch = Math.max(1, Math.round(h * ratio));
+              var canvas = document.createElement("canvas");
+              canvas.width = cw; canvas.height = ch;
+              var ctx = canvas.getContext("2d");
+              ctx.fillStyle = "#ffffff";
+              ctx.fillRect(0, 0, cw, ch);
+              ctx.drawImage(img, 0, 0, cw, ch);
+              out = canvas.toDataURL("image/jpeg", steps[i][1]);
+              if (out.length <= 700000) break;
+            }
+            resolve(out);
+          } catch(err) { reject(err); }
+        };
+        img.src = reader.result;
+      };
+      reader.readAsDataURL(file);
+    });
+  }
+  function imageErrorText(err){
+    var m = err && err.message;
+    if (m === "not-image") return "File yang dipilih bukan gambar. Pilih file JPG, PNG, atau WebP.";
+    if (m === "too-big") return "Ukuran file terlalu besar (maksimal 20 MB). Pilih gambar yang lebih kecil.";
+    return "Gambar tidak bisa dibaca. Simpan ulang sebagai JPG atau PNG, lalu pilih lagi.";
+  }
+  function setSaleImage(dataUrl, fileName){
+    saleImageData = dataUrl || "";
+    saleImageName = fileName || "";
+    if (saleImageData) {
+      saleImgPreviewImg.src = saleImageData;
+      saleImgMeta.textContent = (fileName ? fileName + " — " : "") + Math.round(saleImageData.length * 0.75 / 1024) + " KB setelah dikecilkan";
+      saleImgPreview.classList.add("show");
+      saleImgStatus.textContent = "Gambar siap disimpan.";
+    } else {
+      saleImgPreviewImg.removeAttribute("src");
+      saleImgPreview.classList.remove("show");
+      saleImgMeta.textContent = "";
+      saleImgStatus.textContent = "Belum ada gambar";
+    }
+  }
+  document.getElementById("saleImgPick").addEventListener("click", function(){ saleImageInput.click(); });
+  saleImageInput.addEventListener("change", function(){
+    var file = saleImageInput.files && saleImageInput.files[0];
+    if (!file) return;
+    var token = ++saleImageToken;
+    saleImageBusy = true;
+    saleImgStatus.textContent = "Memproses gambar...";
+    processImageFile(file).then(function(dataUrl){
+      if (token !== saleImageToken) return;
+      saleImageBusy = false;
+      hideSalesMsg();
+      setSaleImage(dataUrl, file.name);
+    }).catch(function(err){
+      if (token !== saleImageToken) return;
+      saleImageBusy = false;
+      setSaleImage("", "");
+      showSalesMsg("error", imageErrorText(err));
+    });
+    saleImageInput.value = ""; // supaya file yang sama bisa dipilih ulang
+  });
+  document.getElementById("saleImgRemove").addEventListener("click", function(){
+    saleImageToken++; saleImageBusy = false;
+    setSaleImage("", "");
+  });
+  function zoomFormImage(){ if (saleImageData) openLightbox(saleImageData, document.getElementById("saleName").value.trim() || saleImageName); }
+  document.getElementById("saleImgPreviewBtn").addEventListener("click", zoomFormImage);
+  document.getElementById("saleImgZoomBtn").addEventListener("click", zoomFormImage);
+
+  function normalizeLink(raw){
+    var v = (raw || "").trim();
+    if (!v) return { ok: true, url: "" };
+    if (!/^[a-z][a-z0-9+.\-]*:\/\//i.test(v)) v = "https://" + v;
+    try {
+      var u = new URL(v);
+      if ((u.protocol !== "http:" && u.protocol !== "https:") || u.hostname.indexOf(".") === -1) return { ok: false };
+      return { ok: true, url: u.href };
+    } catch(e) { return { ok: false }; }
+  }
+
+  function collectSale(){
+    var name = document.getElementById("saleName").value.trim();
+    var unit = document.getElementById("saleUnit").value.trim();
+    var price = parseInt(salePriceEl.value.replace(/\D/g, ""), 10) || 0;
+    var accNo = saleAccNoEl.value.replace(/\D/g, "");
+    var accName = document.getElementById("saleAccName").value.trim();
+    var bankSel = saleBankEl.value;
+    var bank = bankSel === "__other" ? saleBankOtherEl.value.trim() : bankSel;
+    var link = normalizeLink(document.getElementById("saleLink").value);
+
+    var missing = [], bad = [], msgs = [];
+    function need(ok, id, label){ if (!ok) { missing.push(label); bad.push(id); } }
+    need(name, "saleName", "Nama produk");
+    need(unit, "saleUnit", "Satuan");
+    need(price > 0, "salePrice", "Harga");
+    need(accNo, "saleAccNo", "No. rekening");
+    need(accName, "saleAccName", "Nama rekening");
+    need(bank, bankSel === "__other" ? "saleBankOther" : "saleBank", "Jenis bank");
+    if (missing.length) msgs.push("Lengkapi dulu: " + missing.join(", ") + ".");
+    if (!link.ok) { msgs.push("Link harus berupa alamat web yang valid, contoh https://namasitus.com."); bad.push("saleLink"); }
+    if (accNo && (accNo.length < 5 || accNo.length > 20)) { msgs.push("No. rekening harus 5–20 angka."); bad.push("saleAccNo"); }
+    if (saleImageBusy) msgs.push("Gambar masih diproses. Tunggu sebentar, lalu klik Simpan lagi.");
+
+    return {
+      errors: msgs, badIds: bad,
+      data: { name: name, unit: unit, price: price, link: link.url || "", bank: bank, accNo: accNo, accName: accName }
+    };
+  }
+
+  function resetSalesForm(){
+    salesForm.reset();
+    saleBankOtherWrap.hidden = true;
+    saleImageToken++; saleImageBusy = false;
+    setSaleImage("", "");
+    clearInvalid();
+  }
+
+  salesForm.addEventListener("submit", function(e){
+    e.preventDefault();
+    if (salesSaving) return;
+    clearInvalid();
+    hideSalesMsg();
+
+    var r = collectSale();
+    if (r.errors.length) {
+      markInvalid(r.badIds);
+      showSalesMsg("error", r.errors.join(" "));
+      var first = document.getElementById(r.badIds[0]);
+      if (first && first.focus) first.focus();
+      return;
+    }
+    if (!firebaseReady || !salesRef) {
+      showSalesMsg("error", "Database belum tersambung, jadi data belum bisa disimpan. Muat ulang halaman lalu coba lagi.");
+      return;
+    }
+    if (!currentAdminUser()) {
+      showSalesMsg("error", "Sesi login sudah berakhir. Klik Keluar, lalu masuk lagi sebagai admin.");
+      return;
+    }
+    if (!dbConnected) {
+      showSalesMsg("error", "Tidak ada koneksi ke database. Periksa internet Anda, lalu klik Simpan lagi. Isi formulir tidak dihapus.");
+      return;
+    }
+    startSalesListener(); // pastikan tabel ikut ter-update
+
+    var d = r.data;
+    var record = {
+      kind: "listing",
+      productName: d.name,
+      unit: d.unit,
+      price: d.price,
+      link: d.link,
+      bank: d.bank,
+      accountNumber: d.accNo,
+      accountName: d.accName,
+      image: saleImageData || "",
+      createdAt: firebase.database.ServerValue.TIMESTAMP
+    };
+
+    setSalesSaving(true);
+    var settled = false, timedOut = false;
+    var slowTimer = setTimeout(function(){
+      if (!settled) showSalesMsg("info", "Masih menyimpan. Koneksi agak lambat, mohon tunggu.");
+    }, 6000);
+    var giveUpTimer = setTimeout(function(){
+      if (settled) return;
+      timedOut = true;
+      setSalesSaving(false);
+      resetSalesForm();
+      showSalesMsg("info", "Server belum merespons. Data masuk antrean dan akan tersimpan otomatis begitu koneksi pulih. Cek tabel di bawah sebelum menyimpan ulang.");
+    }, 25000);
+
+    function finishOk(){
+      settled = true; clearTimeout(slowTimer); clearTimeout(giveUpTimer);
+      setSalesSaving(false);
+      if (!timedOut) resetSalesForm();
+      var note = salesHandler ? "" : " Tabel belum bisa menampilkannya karena rules database menolak baca (lihat status di bagian atas panel).";
+      showSalesMsg("ok", "Data \"" + d.name + "\" berhasil disimpan." + note, note ? 0 : 7000);
+    }
+    function finishFail(err){
+      settled = true; clearTimeout(slowTimer); clearTimeout(giveUpTimer);
+      setSalesSaving(false);
+      showSalesMsg("error", "Data belum tersimpan — " + describeFirebaseError(err) + (timedOut ? " Data yang tadi masuk antrean tidak jadi tersimpan." : " Isi formulir tidak dihapus, silakan coba lagi."));
+    }
+    try {
+      salesRef.push(record).then(finishOk, finishFail);
+    } catch(err) {
+      finishFail(err);
+    }
+  });
+
+  // ---------------- UNDUH CSV ----------------
+  document.getElementById("exportCsvBtn").addEventListener("click", function(){
+    var statusEl = document.getElementById("exportStatus");
+    if (sales.length === 0) {
+      statusEl.textContent = "Belum ada data untuk diunduh.";
+      return;
+    }
+    statusEl.textContent = "Menyiapkan file...";
+
+    // cegah rumus terbaca Excel (sel yang diawali = + - @)
+    function csvText(v){
+      var t = String(v == null ? "" : v);
+      return /^[=+\-@]/.test(t) ? "'" + t : t;
+    }
+    var header = ["Tanggal dicatat","Nama produk","Satuan","Harga","Link aplikasi/website","Jenis bank","No. rekening","Nama rekening"];
+    var rows = sales.slice().sort(function(a,b){ return (Number(a.createdAt) || 0) - (Number(b.createdAt) || 0); }).map(function(s){
+      var tgl = Number(s.createdAt) ? new Date(Number(s.createdAt)).toISOString().slice(0, 10) : "";
+      return [tgl, csvText(s.productName), csvText(s.unit), Number(s.price) || 0, s.link || "", csvText(s.bank),
+              // ="..." agar Excel tidak mengubah nomor rekening jadi angka ilmiah / membuang angka 0 di depan
+              '="' + String(s.accountNumber || "").replace(/\D/g, "") + '"', csvText(s.accountName)];
+    });
+    var csv = [header].concat(rows).map(function(r){
+      return r.map(function(cell){
+        var val = String(cell == null ? "" : cell).replace(/"/g, '""');
+        return '"' + val + '"';
+      }).join(",");
+    }).join("\n");
+
+    var filename = "data-penjualan-karyadigital.csv";
+
+    function tryBrowserFallback(reasonPrefix){
+      try {
+        var blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
+        var url = URL.createObjectURL(blob);
+        var a = document.createElement("a");
+        a.href = url;
+        a.download = filename;
+        a.target = "_blank";
+        a.rel = "noopener";
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        setTimeout(function(){ URL.revokeObjectURL(url); }, 4000);
+        statusEl.textContent = (reasonPrefix || "") + "Kalau file tidak otomatis tersimpan, salin datanya dari kotak yang muncul di bawah tombol ini.";
+      } catch(e) {
+        statusEl.textContent = "Unduh tidak didukung di tampilan ini. Salin data dari kotak di bawah, lalu tempel ke file .csv secara manual.";
+      }
+      showRawCsvFallback(csv);
+    }
+
+    function showRawCsvFallback(csvText){
+      var existing = document.getElementById("rawCsvBox");
+      if (existing) existing.remove();
+      var box = document.createElement("textarea");
+      box.id = "rawCsvBox";
+      box.readOnly = true;
+      box.value = csvText;
+      box.style.width = "100%";
+      box.style.marginTop = "10px";
+      box.style.minHeight = "120px";
+      box.style.fontFamily = "monospace";
+      box.style.fontSize = "12px";
+      box.style.padding = "10px";
+      box.style.border = "1px solid var(--card-border)";
+      box.style.borderRadius = "8px";
+      box.style.background = "var(--paper)";
+      box.style.color = "var(--ink)";
+      document.getElementById("exportActions").insertAdjacentElement("afterend", box);
+      box.addEventListener("click", function(){ box.select(); });
+    }
+
+    if (window.claude && typeof window.claude.use === "function") {
+      window.claude.use("downloads").then(function(downloads){
+        if (!downloads) {
+          tryBrowserFallback("Fitur unduh langsung tidak tersedia di tampilan ini. ");
+          return;
+        }
+        downloads.save({ filename: filename, data: csv }).then(function(){
+          statusEl.textContent = "Berhasil diunduh.";
+        }).catch(function(err){
+          var code = err && err.code;
+          if (code === "declined") {
+            statusEl.textContent = "Unduhan dibatalkan.";
+          } else {
+            tryBrowserFallback("Unduh via sistem gagal (" + (code || "unknown") + "). ");
+          }
+        });
+      }).catch(function(){
+        tryBrowserFallback("");
+      });
+    } else {
+      tryBrowserFallback("");
+    }
+  });
+})();
+</script>
+
+</body>
+</html>
