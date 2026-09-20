@@ -731,6 +731,17 @@
   .product-info ul { color: var(--slate); line-height: 1.75; padding-left: 20px; margin: 0 0 12px; }
   .footer-links { display: flex; flex-direction: column; gap: 6px; font-size: 14px; }
   .footer-links a { text-decoration: underline; }
+
+  .card-shot { width:100%; aspect-ratio:16/10; object-fit:cover; border-radius:8px; border:1px solid var(--card-border); margin-bottom:14px; display:block; }
+  .card p.desc { white-space: pre-line; }
+  .card-links { display:flex; flex-wrap:wrap; gap:8px 16px; margin-top:12px; }
+  .card-links a { font-size:14px; font-weight:600; color:var(--indigo); text-decoration:none; }
+  .card-links a:hover { text-decoration:underline; }
+  .pay-box { margin-top:12px; padding:10px 12px; border:1px dashed var(--card-border); border-radius:8px; font-size:13px; color:var(--slate); line-height:1.5; }
+  .pay-box b { color:var(--ink); }
+  .img-pick { display:flex; align-items:center; gap:12px; flex-wrap:wrap; }
+  .img-pick img { width:120px; height:75px; object-fit:cover; border-radius:6px; border:1px solid var(--card-border); display:none; }
+  .img-pick img.show { display:block; }
 </style>
 </head>
 <body>
@@ -938,34 +949,27 @@
 
       <form id="productForm" style="display:none; margin-top:18px; border-top:1px solid var(--card-border); padding-top:18px;">
         <h4 id="productFormTitle" style="font-family:var(--serif); font-size:17px; margin:0 0 14px;">Tambah Produk</h4>
-        <div class="field-row">
-          <div class="field"><label for="pName">Nama produk</label><input type="text" id="pName" placeholder="Contoh: Aplikasi Absensi Sekolah"></div>
-          <div class="field"><label for="pCategory">Kategori</label><input type="text" id="pCategory" placeholder="Contoh: sekolah, undangan, umum" list="pCategoryList"><datalist id="pCategoryList"></datalist></div>
-        </div>
-        <div class="field-row">
-          <div class="field"><label for="pBadge">Label badge</label><input type="text" id="pBadge" placeholder="Contoh: Aplikasi Sekolah"></div>
-          <div class="field"><label for="pIcon">Ikon kartu</label>
-            <select id="pIcon">
-              <option value="school">Sekolah</option>
-              <option value="invite">Undangan</option>
-              <option value="lainnya">Lainnya</option>
-            </select>
-          </div>
-        </div>
-        <div class="field"><label for="pDesc">Deskripsi singkat</label><input type="text" id="pDesc" placeholder="Satu kalimat tentang produk ini"></div>
-        <div class="field"><label for="pFeatures">Fitur unggulan (satu baris per fitur)</label>
-          <textarea id="pFeatures" class="pf-textarea" rows="3" placeholder="Cetak otomatis semua jenjang&#10;Data tersimpan rapi &amp; mudah dicari"></textarea>
-        </div>
-        <div class="field-row">
-          <div class="field"><label for="pDemoUrl">Link demo (opsional)</label><input type="text" id="pDemoUrl" placeholder="https://..."></div>
-          <div class="field"><label for="pDemoLabel">Label link demo</label><input type="text" id="pDemoLabel" placeholder="Coba versi web"></div>
-        </div>
-
-        <div class="variant-label" style="margin:16px 0 8px;">Paket / varian harga</div>
+        <div class="field"><label for="pName">Nama produk</label><input type="text" id="pName" placeholder="Contoh: Aplikasi Absensi Sekolah"></div>
+        <div class="field"><label for="pDesc">Deskripsi produk</label><textarea id="pDesc" class="pf-textarea" rows="5" placeholder="Jelaskan fungsi, manfaat, dan kelebihan produk ini..."></textarea></div>
+        <div class="variant-label" style="margin:16px 0 8px;">Harga</div>
         <div id="variantRows"></div>
-        <button type="button" class="btn-secondary" id="addVariantRowBtn">+ Tambah paket</button>
+        <button type="button" class="btn-secondary" id="addVariantRowBtn">+ Tambah pilihan harga lain</button>
 
-        <p class="form-error" id="productFormError">Lengkapi nama produk, badge, deskripsi, dan minimal satu paket dengan harga.</p>
+        <div class="variant-label" style="margin:20px 0 8px;">Rekening penjual</div>
+        <div class="field-row">
+          <div class="field"><label for="pBank">Bank</label><input type="text" id="pBank" placeholder="Contoh: BRI"></div>
+          <div class="field"><label for="pAccName">Nama pemilik rekening</label><input type="text" id="pAccName"></div>
+        </div>
+        <div class="field"><label for="pAccNo">Nomor rekening</label><input type="text" id="pAccNo" inputmode="numeric" placeholder="Contoh: 1234567890"><span class="hint">Rekening ini tampil di kartu produk agar pembeli tahu tujuan transfer.</span></div>
+        <div class="field-row">
+          <div class="field"><label for="pAppUrl">Link aplikasi</label><input type="text" id="pAppUrl" placeholder="https://..."></div>
+          <div class="field"><label for="pWebUrl">Link website</label><input type="text" id="pWebUrl" placeholder="https://..."></div>
+        </div>
+        <div class="field"><label for="pImage">Foto / gambar tampilan aplikasi</label>
+          <div class="img-pick"><input type="file" id="pImage" accept="image/*"><img id="pImgPreview" alt="Pratinjau gambar"><button type="button" class="btn-secondary" id="pImgClear" style="display:none;">Hapus gambar</button></div>
+          <span class="hint" id="pImgHint">JPG, PNG, atau WebP. Otomatis dikecilkan agar situs tetap cepat.</span>
+        </div>
+        <p class="form-error" id="productFormError">Lengkapi nama produk, deskripsi, dan harga.</p>
         <div class="admin-panel-actions" style="margin-top:18px;">
           <button type="submit" class="submit-btn" style="width:auto; padding:12px 20px;">Simpan produk</button>
           <button type="button" class="btn-secondary" id="cancelProductBtn">Batal</button>
@@ -1300,15 +1304,24 @@
           '</button>';
       }).join("");
 
+      var shot = safeImg(p.image);
+      var shotHtml = shot ? '<img class="card-shot" src="' + shot + '" alt="Tampilan ' + esc(p.name) + '" loading="lazy">' : "";
+      var linkHtml = "";
+      if (safeUrl(p.appUrl)) linkHtml += '<a href="' + esc(safeUrl(p.appUrl)) + '" target="_blank" rel="noopener">Link aplikasi &rarr;</a>';
+      if (safeUrl(p.webUrl)) linkHtml += '<a href="' + esc(safeUrl(p.webUrl)) + '" target="_blank" rel="noopener">Kunjungi website &rarr;</a>';
+      if (linkHtml) linkHtml = '<div class="card-links">' + linkHtml + '</div>';
+      var payHtml = (p.bank || p.accNo) ? '<div class="pay-box"><b>Transfer pembayaran</b><br>' + esc(((p.bank || "") + " " + (p.accNo || "")).trim()) + (p.accName ? '<br>a.n. ' + esc(p.accName) : "") + '</div>' : "";
+
       var demoHtml = p.demoUrl ? '<a class="demo-link" href="' + p.demoUrl + '" target="_blank" rel="noopener">' + (p.demoLabel || "Lihat demo") + ' &rarr;</a>' : "";
 
       card.innerHTML =
+        shotHtml +
         '<div class="card-top">' +
           '<div class="card-icon ' + p.icon + '">' + iconSvg[p.icon] + '</div>' +
           '<span class="badge">' + p.badge + '</span>' +
         '</div>' +
         '<h3>' + p.name + '</h3>' +
-        '<p class="desc">' + p.desc + '</p>' +
+        '<p class="desc">' + esc(p.desc) + '</p>' +
         '<ul class="feat">' + featHtml + '</ul>' +
         '<div class="variant-group">' +
           '<div class="variant-label">Pilih paket</div>' +
@@ -1318,7 +1331,7 @@
           '<div class="price-now" id="price-' + p.id + '">' + fmtRupiah(getVariant(p, selectedVariant[p.id]).price) + '</div>' +
           '<button class="add-btn" data-add="' + p.id + '">Tambah ke keranjang</button>' +
         '</div>' +
-        demoHtml;
+        demoHtml + linkHtml + payHtml;
 
       grid.appendChild(card);
     });
@@ -1763,6 +1776,44 @@
   var PRODUCT_ERR_DEFAULT = document.getElementById("productFormError").textContent;
   var editingProductId = null;
   var variantRowSeq = 0;
+  var pImageData = "";
+  var pImgBusy = false;
+  function showProductImage(){
+    var im = document.getElementById("pImgPreview"), clr = document.getElementById("pImgClear");
+    if (pImageData) { im.src = pImageData; im.classList.add("show"); clr.style.display = ""; }
+    else { im.removeAttribute("src"); im.classList.remove("show"); clr.style.display = "none"; }
+  }
+  function shrinkImage(dataUrl, maxSide, q){
+    return new Promise(function(resolve, reject){
+      var img = new Image();
+      img.onerror = function(){ reject(new Error("decode")); };
+      img.onload = function(){
+        var r = Math.min(1, maxSide / Math.max(img.naturalWidth, img.naturalHeight));
+        var c = document.createElement("canvas");
+        c.width = Math.max(1, Math.round(img.naturalWidth * r));
+        c.height = Math.max(1, Math.round(img.naturalHeight * r));
+        var x = c.getContext("2d");
+        x.fillStyle = "#ffffff"; x.fillRect(0, 0, c.width, c.height);
+        x.drawImage(img, 0, 0, c.width, c.height);
+        resolve(c.toDataURL("image/jpeg", q));
+      };
+      img.src = dataUrl;
+    });
+  }
+  document.getElementById("pImage").addEventListener("change", function(){
+    var f = this.files && this.files[0];
+    if (!f) return;
+    var hint = document.getElementById("pImgHint");
+    hint.textContent = "Memproses gambar...";
+    pImgBusy = true;
+    processImageFile(f).then(function(d){ return shrinkImage(d, 800, 0.72); }).then(function(d){
+      pImageData = d; showProductImage();
+      hint.textContent = "Gambar siap (" + Math.round(d.length * 0.75 / 1024) + " KB).";
+    }).catch(function(err){ hint.textContent = imageErrorText(err); }).then(function(){ pImgBusy = false; });
+  });
+  document.getElementById("pImgClear").addEventListener("click", function(){
+    pImageData = ""; document.getElementById("pImage").value = ""; showProductImage();
+  });
 
   function addVariantRow(data){
     variantRowSeq++;
@@ -1770,8 +1821,8 @@
     row.className = "variant-row";
     var esc = function(s){ return (s == null ? "" : String(s)).replace(/"/g, "&quot;"); };
     row.innerHTML =
-      '<input type="text" class="vr-name" placeholder="Nama paket" value="' + esc(data && data.name) + '">' +
-      '<input type="number" class="vr-price" placeholder="Harga" value="' + (data && data.price ? data.price : "") + '">' +
+      '<input type="text" class="vr-name" placeholder="Nama paket (boleh kosong)" value="' + esc(data && data.name) + '">' +
+      '<input type="number" class="vr-price" placeholder="Harga (Rp)" value="' + (data && data.price ? data.price : "") + '">' +
       '<input type="text" class="vr-note" placeholder="Catatan (opsional)" value="' + esc(data && data.note) + '">' +
       '<button type="button" title="Hapus paket" aria-label="Hapus paket">&times;</button>';
     row.querySelector("button").addEventListener("click", function(){ row.remove(); });
@@ -1784,7 +1835,7 @@
       var name = r.querySelector(".vr-name").value.trim();
       var price = parseInt(r.querySelector(".vr-price").value, 10);
       var note = r.querySelector(".vr-note").value.trim();
-      if (name && price > 0) {
+      if (price > 0) { if (!name) name = "Standar";
         out.push({ id: "v" + (idx + 1) + "_" + Date.now().toString(36), name: name, price: price, note: note });
       }
     });
@@ -1801,22 +1852,24 @@
     document.getElementById("productFormTitle").textContent = id ? "Edit Produk" : "Tambah Produk";
     document.getElementById("productFormError").classList.remove("show");
     document.getElementById("variantRows").innerHTML = "";
+    pImageData = "";
     if (id) {
       var p = getProduct(id);
       document.getElementById("pName").value = p.name || "";
-      document.getElementById("pCategory").value = p.category || "";
-      document.getElementById("pBadge").value = p.badge || "";
-      document.getElementById("pIcon").value = p.icon || "lainnya";
       document.getElementById("pDesc").value = p.desc || "";
-      document.getElementById("pFeatures").value = (p.features || []).join("\n");
-      document.getElementById("pDemoUrl").value = p.demoUrl || "";
-      document.getElementById("pDemoLabel").value = p.demoLabel || "";
+      document.getElementById("pBank").value = p.bank || "";
+      document.getElementById("pAccName").value = p.accName || "";
+      document.getElementById("pAccNo").value = p.accNo || "";
+      document.getElementById("pAppUrl").value = p.appUrl || "";
+      document.getElementById("pWebUrl").value = p.webUrl || "";
+      pImageData = safeImg(p.image);
       (p.variants || []).forEach(function(v){ addVariantRow(v); });
     } else {
-      ["pName","pCategory","pBadge","pDesc","pFeatures","pDemoUrl","pDemoLabel"].forEach(function(fid){ document.getElementById(fid).value = ""; });
-      document.getElementById("pIcon").value = "lainnya";
+      ["pName","pDesc","pBank","pAccName","pAccNo","pAppUrl","pWebUrl"].forEach(function(fid){ document.getElementById(fid).value = ""; });
       addVariantRow();
     }
+    document.getElementById("pImage").value = "";
+    showProductImage();
     updateCategoryDatalist();
     productForm.style.display = "block";
     productForm.scrollIntoView({ behavior: "smooth", block: "nearest" });
@@ -1832,24 +1885,42 @@
   productForm.addEventListener("submit", function(e){
     e.preventDefault();
     var name = document.getElementById("pName").value.trim();
-    var badge = document.getElementById("pBadge").value.trim();
     var desc = document.getElementById("pDesc").value.trim();
-    var category = document.getElementById("pCategory").value.trim() || "umum";
-    var icon = document.getElementById("pIcon").value;
-    var features = document.getElementById("pFeatures").value.split("\n").map(function(s){ return s.trim(); }).filter(Boolean);
-    var demoUrl = document.getElementById("pDemoUrl").value.trim() || null;
-    var demoLabel = document.getElementById("pDemoLabel").value.trim() || (demoUrl ? "Lihat demo" : null);
+    var old = editingProductId ? getProduct(editingProductId) : null;
     var variants = collectVariantRows();
     var errEl = document.getElementById("productFormError");
+    var appUrl = document.getElementById("pAppUrl").value.trim();
+    var webUrl = document.getElementById("pWebUrl").value.trim();
+    var val = function(id){ return document.getElementById(id).value.trim() || null; };
 
-    if (!name || !badge || !desc || variants.length === 0) {
+    if (!name || !desc || variants.length === 0) {
       errEl.textContent = PRODUCT_ERR_DEFAULT;
+      errEl.classList.add("show");
+      return;
+    }
+    if ((appUrl && !safeUrl(appUrl)) || (webUrl && !safeUrl(webUrl))) {
+      errEl.textContent = "Link aplikasi dan link website harus diawali http:// atau https://";
+      errEl.classList.add("show");
+      return;
+    }
+    if (pImgBusy) {
+      errEl.textContent = "Gambar masih diproses, tunggu sebentar lalu simpan lagi.";
       errEl.classList.add("show");
       return;
     }
     errEl.classList.remove("show");
 
-    var productData = { name: name, category: category, badge: badge, icon: icon, desc: desc, features: features, demoUrl: demoUrl, demoLabel: demoLabel, variants: variants };
+    var productData = {
+      name: name, desc: desc, variants: variants,
+      category: (old && old.category) || "umum",
+      badge: (old && old.badge) || "Produk Digital",
+      icon: (old && old.icon) || "lainnya",
+      features: (old && old.features) || [],
+      demoUrl: (old && old.demoUrl) || null,
+      demoLabel: (old && old.demoLabel) || null,
+      bank: val("pBank"), accName: val("pAccName"), accNo: val("pAccNo"),
+      appUrl: appUrl || null, webUrl: webUrl || null, image: pImageData || null
+    };
 
     if (firebaseReady && productsRef) {
       var pBtn = productForm.querySelector('button[type="submit"]');
