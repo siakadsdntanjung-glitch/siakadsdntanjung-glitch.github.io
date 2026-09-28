@@ -1,0 +1,87 @@
+name: Build & deploy situs (GitHub Pages)
+
+on:
+  # Cek data Firestore secara berkala. Jam dalam UTC (WIB = UTC+7).
+  # Kalau tidak ada yang berubah, tidak ada deploy.
+  schedule:
+    - cron: '0 */3 * * *'   # tiap 3 jam
+  # Tombol "Run workflow" di tab Actions, untuk terbit sekarang juga
+  workflow_dispatch:
+  # Otomatis saat index.html / build.js / ads.txt / konten-aplikasi.json / artikel diubah
+  push:
+    branches: [main]
+    paths: ['index.html', 'build.js', 'ads.txt', 'konten-aplikasi.json', 'artikel/**', '.github/workflows/deploy.yml']
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Pastikan alamat situs sudah diisi
+        env:
+          SITE_URL: ${{ vars.SITE_URL }}
+        run: |
+          if [ -z "$SITE_URL" ]; then
+            echo "::error::Variabel SITE_URL belum diisi. Buka Settings > Secrets and variables > Actions > Variables, lalu tambahkan SITE_URL (contoh: https://siakadsdntanjung-glitch.github.io)"
+            exit 1
+          fi
+
+      - name: Build (ambil data terbaru dari Firestore)
+        env:
+          SITE_URL: ${{ vars.SITE_URL }}
+          ADSENSE_CLIENT: ${{ vars.ADSENSE_CLIENT }}
+          CONTACT_EMAIL: ${{ vars.CONTACT_EMAIL }}
+        run: node build.js
+
+      # Supaya GitHub Pages tidak memproses Jekyll
+      - name: Nonaktifkan Jekyll
+        run: touch dist/.nojekyll
+
+      - name: Catat isi hasil build
+        run: |
+          mkdir -p .deploy-marker
+          find dist -type f -print0 | sort -z | xargs -0 sha256sum > .deploy-marker/manifest.txt
+
+      # Kalau isi hasil build sama persis dengan yang terakhir di-deploy, langkah deploy dilewati.
+      - name: Cek riwayat deploy
+        id: last
+        uses: actions/cache@v4
+        with:
+          path: .deploy-marker
+          key: deployed-${{ hashFiles('dist/**') }}
+
+      - name: Siapkan file untuk GitHub Pages
+        if: steps.last.outputs.cache-hit != 'true'
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+      - name: Deploy ke GitHub Pages
+        id: deployment
+        if: steps.last.outputs.cache-hit != 'true'
+        uses: actions/deploy-pages@v4
+
+      - name: Ringkasan
+        run: |
+          if [ "${{ steps.last.outputs.cache-hit }}" = "true" ]; then
+            echo "Tidak ada perubahan sejak deploy terakhir, deploy dilewati." >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "Situs diperbarui: $(find dist/aplikasi -mindepth 1 -maxdepth 1 -type d | wc -l) halaman aplikasi." >> "$GITHUB_STEP_SUMMARY"
+          fi
