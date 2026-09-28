@@ -1,0 +1,16 @@
+{
+  "_petunjuk": "Kunci boleh berupa judul aplikasi persis seperti di situs, atau alamat halamannya. Kunci yang diawali garis bawah (_) diabaikan. Isi tiap aplikasi dengan kalimat sendiri, jangan sama antar aplikasi.",
+  "_contoh-nama-aplikasi": {
+    "body": "Paragraf pertama: apa aplikasi ini dan masalah apa yang diselesaikannya (100-200 kata).\n\nParagraf kedua: fitur utama dan bagaimana fitur itu dipakai dalam pekerjaan sehari-hari.",
+    "audience": "Cocok untuk wali kelas SD yang perlu mengisi dan mencetak rapor untuk seluruh siswa di kelasnya.",
+    "steps": [
+      "Buka aplikasi lewat tombol di bagian atas halaman.",
+      "Isi data sekolah dan daftar siswa.",
+      "Masukkan nilai, lalu cetak hasilnya."
+    ],
+    "faq": [
+      { "q": "Apakah data saya tersimpan di mana?", "a": "Jelaskan dengan jujur di mana data disimpan." },
+      { "q": "Apakah bisa dipakai di HP?", "a": "Jelaskan apakah tampilan cocok untuk HP." }
+    ]
+  }
+}
