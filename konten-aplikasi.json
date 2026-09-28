@@ -1,16 +1,93 @@
 {
   "_petunjuk": "Kunci boleh berupa judul aplikasi persis seperti di situs, atau alamat halamannya. Kunci yang diawali garis bawah (_) diabaikan. Isi tiap aplikasi dengan kalimat sendiri, jangan sama antar aplikasi.",
-  "_contoh-nama-aplikasi": {
-    "body": "Paragraf pertama: apa aplikasi ini dan masalah apa yang diselesaikannya (100-200 kata).\n\nParagraf kedua: fitur utama dan bagaimana fitur itu dipakai dalam pekerjaan sehari-hari.",
-    "audience": "Cocok untuk wali kelas SD yang perlu mengisi dan mencetak rapor untuk seluruh siswa di kelasnya.",
+
+  "absen-digital": {
+    "body": "Absen Digital adalah aplikasi web untuk mencatat kehadiran guru secara real time. Di banyak sekolah, absensi guru masih memakai buku atau tanda tangan di lembar kertas. Cara itu mudah terlewat, sulit direkap, dan rawan selisih saat kepala sekolah membutuhkan data di akhir bulan. Aplikasi ini memindahkan pencatatan tersebut ke browser sehingga kehadiran tercatat pada saat guru hadir dan hasilnya bisa dilihat kapan saja.\n\nDalam pemakaian sehari-hari, guru mencatat kehadirannya lewat halaman aplikasi, lalu kepala sekolah atau operator dapat melihat daftar hadir yang sudah terkumpul tanpa menunggu rekapan manual. Data yang tercatat secara rutin memudahkan sekolah menyusun laporan kehadiran dan membicarakan kedisiplinan dengan dasar catatan yang jelas dan transparan.",
+    "audience": "Cocok untuk kepala sekolah dan operator yang ingin memantau kehadiran guru dengan lebih rapi, serta guru yang ingin kehadirannya tercatat dengan jelas.",
     "steps": [
-      "Buka aplikasi lewat tombol di bagian atas halaman.",
-      "Isi data sekolah dan daftar siswa.",
-      "Masukkan nilai, lalu cetak hasilnya."
+      "Buka aplikasi lewat tombol Akses Website di halaman ini.",
+      "Masuk atau pilih nama Anda sesuai petunjuk yang tampil di aplikasi.",
+      "Catat kehadiran pada hari bertugas.",
+      "Kepala sekolah atau operator memeriksa daftar hadir yang terkumpul dan mencocokkannya dengan kebutuhan laporan."
     ],
     "faq": [
-      { "q": "Apakah data saya tersimpan di mana?", "a": "Jelaskan dengan jujur di mana data disimpan." },
-      { "q": "Apakah bisa dipakai di HP?", "a": "Jelaskan apakah tampilan cocok untuk HP." }
+      { "q": "Apakah aplikasi ini bisa dibuka lewat HP?", "a": "Aplikasi berbasis web, jadi dapat dibuka lewat browser di HP maupun laptop selama ada koneksi internet." },
+      { "q": "Apa gunanya pencatatan real time?", "a": "Kehadiran tercatat saat kejadian, sehingga rekap akhir bulan tidak bergantung pada ingatan atau lembar kertas yang mungkin hilang." }
+    ]
+  },
+
+  "arsipkan-semua-dokumen": {
+    "body": "Arsipkan Semua Dokumen adalah aplikasi arsip digital untuk menyimpan berbagai jenis dokumen sekolah di satu tempat. Dokumen seperti surat, laporan, atau berkas administrasi sering tersebar di banyak map dan komputer, sehingga ketika dibutuhkan mendadak, waktu habis untuk mencarinya. Arsip digital membantu mengurangi masalah itu.\n\nDengan aplikasi ini, dokumen diunggah dan disimpan secara terpusat, lalu dapat dibuka kembali dari browser tanpa harus membongkar tumpukan kertas. Kebiasaan mengarsipkan dokumen digital juga menjadi cadangan bila berkas fisik rusak atau hilang, sehingga urusan administrasi sekolah lebih tenang.",
+    "audience": "Cocok untuk operator dan tenaga administrasi sekolah yang mengelola banyak surat dan dokumen dan ingin mencarinya kembali dengan cepat.",
+    "steps": [
+      "Buka aplikasi lewat tombol yang tersedia di halaman ini.",
+      "Siapkan dokumen yang akan diarsipkan, misalnya hasil pindai atau berkas digital.",
+      "Unggah dokumen dan beri nama yang jelas agar mudah dicari.",
+      "Buka kembali arsip saat dibutuhkan dari browser."
+    ],
+    "faq": [
+      { "q": "Jenis dokumen apa yang bisa disimpan?", "a": "Aplikasi ini dirancang untuk menyimpan berbagai jenis dokumen sekolah. Sebaiknya simpan hanya dokumen yang memang perlu diarsipkan." },
+      { "q": "Apakah dokumen fisik boleh dibuang setelah diarsipkan?", "a": "Tidak otomatis. Ikuti aturan kearsipan yang berlaku di sekolah Anda dan simpan dokumen asli yang wajib disimpan." }
+    ]
+  },
+
+  "pencatatan-perjalanan-dinas": {
+    "body": "Pencatatan Perjalanan Dinas adalah aplikasi web untuk mengelola administrasi perjalanan dinas sekolah secara digital. Perjalanan dinas melibatkan banyak berkas, seperti surat tugas, laporan kegiatan, dan bukti pendukung. Kalau dicatat manual, data mudah tercecer dan sulit dicocokkan saat menyusun laporan pertanggungjawaban.\n\nAplikasi ini membantu sekolah mencatat perjalanan dinas secara berurutan sehingga riwayatnya rapi dan mudah ditelusuri. Data yang tersimpan dapat dijadikan dasar saat menyiapkan laporan, dan bendahara maupun operator tidak perlu mencari-cari berkas di akhir periode.",
+    "audience": "Cocok untuk operator sekolah dan bendahara yang menangani surat tugas serta laporan perjalanan dinas guru dan pegawai.",
+    "steps": [
+      "Buka aplikasi lewat tombol yang tersedia di halaman ini.",
+      "Catat data perjalanan dinas, seperti pelaksana, tujuan, dan tanggal.",
+      "Lengkapi dengan data pendukung yang diminta aplikasi.",
+      "Periksa kembali catatan sebelum dipakai untuk laporan."
+    ],
+    "faq": [
+      { "q": "Apakah aplikasi ini menggantikan surat tugas resmi?", "a": "Tidak. Aplikasi membantu pencatatan administrasi. Dokumen resmi tetap mengikuti ketentuan sekolah dan dinas pendidikan setempat." },
+      { "q": "Apakah cocok untuk sekolah kecil?", "a": "Ya, aplikasi web ini dapat dipakai sekolah dengan jumlah guru berapa pun." }
+    ]
+  },
+
+  "perpustakaan-sekolah": {
+    "body": "Perpustakaan Sekolah adalah aplikasi berbasis web untuk mengelola inventaris dan mencatat peminjaman buku. Pengelola perpustakaan sekolah biasanya bekerja dengan buku catatan, sehingga sulit mengetahui buku mana yang sedang dipinjam, siapa peminjamnya, dan kapan harus kembali. Pencatatan manual juga menyulitkan pengecekan jumlah koleksi.\n\nDengan aplikasi ini, koleksi buku dan riwayat peminjaman dicatat dalam satu sistem. Pengelola dapat melihat status buku, mengurangi buku yang hilang karena tidak tercatat, dan lebih mudah menyusun laporan koleksi perpustakaan untuk keperluan sekolah.",
+    "audience": "Cocok untuk guru atau petugas perpustakaan sekolah yang mengelola koleksi buku dan ingin peminjaman tercatat dengan tertib.",
+    "steps": [
+      "Buka aplikasi lewat tombol yang tersedia di halaman ini.",
+      "Masukkan daftar buku koleksi perpustakaan.",
+      "Catat setiap peminjaman dan pengembalian buku.",
+      "Periksa status koleksi secara berkala untuk mengetahui buku yang belum kembali."
+    ],
+    "faq": [
+      { "q": "Apakah harus memasukkan seluruh koleksi sekaligus?", "a": "Tidak harus. Data koleksi bisa dimasukkan bertahap, dimulai dari buku yang paling sering dipinjam." },
+      { "q": "Apakah aplikasi ini bisa dipakai bersama petugas lain?", "a": "Karena berbasis web, aplikasi dapat dibuka dari beberapa perangkat. Bagi tugas dengan jelas agar catatan tidak tertimpa." }
+    ]
+  },
+
+  "raport-semua-jenjang": {
+    "body": "Raport Semua Jenjang adalah aplikasi untuk mengelola nilai siswa dan mencetak rapor secara digital. Menyusun rapor secara manual memakan waktu, terutama menjelang akhir semester ketika nilai dari banyak mata pelajaran harus dihitung, diperiksa, lalu disalin satu per satu. Kesalahan ketik kecil bisa membuat rapor harus dicetak ulang.\n\nAplikasi ini membantu wali kelas dan operator memasukkan nilai, menjaga format tetap konsisten, dan mencetak rapor tanpa harus mengulang pekerjaan dari awal. Hasil tetap perlu dibaca ulang oleh guru, karena ketepatan rapor bergantung pada data yang dimasukkan.",
+    "audience": "Cocok untuk wali kelas dan operator sekolah yang mengisi serta mencetak rapor siswa setiap semester.",
+    "steps": [
+      "Buka aplikasi lewat tombol yang tersedia di halaman ini.",
+      "Isi data sekolah dan daftar siswa.",
+      "Masukkan nilai dan catatan rapor.",
+      "Periksa hasilnya, cetak satu rapor lebih dulu untuk memastikan tata letak, lalu cetak seluruhnya."
+    ],
+    "faq": [
+      { "q": "Apakah aplikasi ini sudah pasti sesuai format rapor di daerah saya?", "a": "Format rapor dapat berbeda antar daerah. Selalu cocokkan hasil cetak dengan panduan dinas pendidikan atau kebijakan sekolah Anda." },
+      { "q": "Apakah nilai dihitung otomatis?", "a": "Aplikasi membantu pengolahan nilai, tetapi guru tetap perlu memeriksa angka sebelum rapor dicetak." }
+    ]
+  },
+
+  "sistem-keuangan-bosp-sekolah": {
+    "body": "Sistem Keuangan BOSP Sekolah adalah aplikasi untuk membantu pembuatan SPJ BOSP yang lebih akurat, transparan, dan efektif. Dana BOSP adalah dana publik, sehingga setiap pemasukan dan pengeluaran harus dicatat dengan bukti yang jelas. Bagi bendahara, penyusunan SPJ manual sering memakan waktu dan rawan salah hitung.\n\nAplikasi ini membantu mencatat transaksi dan menyusun laporan pertanggungjawaban dengan lebih rapi. Bendahara dapat mengurangi kesalahan hitung dan mempersingkat penyusunan laporan, sementara sekolah tetap harus menyimpan bukti transaksi dan mengikuti petunjuk teknis BOSP terbaru dari kementerian serta dinas pendidikan.",
+    "audience": "Cocok untuk bendahara sekolah dan operator yang menyusun SPJ dan laporan penggunaan dana BOSP.",
+    "steps": [
+      "Buka aplikasi lewat tombol yang tersedia di halaman ini.",
+      "Catat penerimaan dan pengeluaran sesuai bukti yang Anda miliki.",
+      "Cocokkan catatan dengan saldo bank dan bukti transaksi.",
+      "Susun SPJ dari data yang sudah tertata, lalu periksa sebelum diserahkan."
+    ],
+    "faq": [
+      { "q": "Apakah aplikasi ini menggantikan bukti transaksi?", "a": "Tidak. Nota, kuitansi, dan bukti kegiatan tetap harus disimpan sesuai ketentuan." },
+      { "q": "Apakah aturan BOSP di aplikasi selalu terbaru?", "a": "Aturan BOSP dapat berubah tiap tahun. Selalu rujuk petunjuk teknis terbaru dari kementerian dan dinas pendidikan setempat." }
     ]
   }
 }
