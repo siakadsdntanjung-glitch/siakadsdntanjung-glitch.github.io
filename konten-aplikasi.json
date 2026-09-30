@@ -89,5 +89,21 @@
       { "q": "Apakah aplikasi ini menggantikan bukti transaksi?", "a": "Tidak. Nota, kuitansi, dan bukti kegiatan tetap harus disimpan sesuai ketentuan." },
       { "q": "Apakah aturan BOSP di aplikasi selalu terbaru?", "a": "Aturan BOSP dapat berubah tiap tahun. Selalu rujuk petunjuk teknis terbaru dari kementerian dan dinas pendidikan setempat." }
     ]
+  },
+
+  "generate-perangkat-ajar": {
+    "body": "Generate Perangkat Ajar adalah aplikasi web yang membantu guru menyusun perangkat pembelajaran Kurikulum Merdeka, yaitu Modul Ajar, Silabus, Program Tahunan (Prota), dan Program Semester (Promes). Menyusun keempat dokumen ini dari nol biasanya menyita banyak waktu, apalagi bila harus diulang setiap tahun ajaran atau untuk setiap kelas. Banyak guru akhirnya menyalin dokumen lama lalu mengubahnya sedikit demi sedikit, dan cara itu mudah meninggalkan bagian yang sudah tidak sesuai.\n\nGuru cukup mengisi nama sekolah, tahun pelajaran, kelas dan semester, mata pelajaran, materi, capaian pembelajaran, serta jumlah jam pelajaran per minggu. Dari data itu AI menyusun draf dalam format tabel yang tertata: sampul, identitas modul, tujuan pembelajaran, langkah kegiatan dari pendahuluan sampai penutup, asesmen, hingga lampiran berupa LKPD, bahan bacaan, dan glosarium. Hasilnya dapat diunduh sebagai PDF atau Word untuk disunting, dan riwayat modul tersimpan di akun guru. Karena disusun oleh AI, draf tetap perlu dibaca dan disesuaikan dengan kondisi kelas sebelum dipakai mengajar.",
+    "audience": "Cocok untuk guru kelas dan guru mata pelajaran yang menyusun administrasi pembelajaran, serta kepala sekolah atau operator yang ingin perangkat ajar para guru tersusun dengan format yang seragam.",
+    "steps": [
+      "Buka aplikasi lewat tombol Akses Website di halaman ini, lalu daftar atau masuk dengan email. Akun baru perlu disetujui admin sebelum dapat dipakai.",
+      "Isi nama sekolah, tahun pelajaran, kelas dan semester, mata pelajaran, materi, serta capaian pembelajaran.",
+      "Pilih perangkat yang dibutuhkan (Modul Ajar, Silabus, Prota, atau Promes), klik Generate, lalu tunggu sekitar satu menit.",
+      "Baca dan sesuaikan hasilnya, kemudian unduh sebagai PDF atau Word, atau cetak langsung dari browser."
+    ],
+    "faq": [
+      { "q": "Apakah hasilnya bisa langsung dipakai tanpa diperiksa?", "a": "Sebaiknya tidak. Hasilnya adalah draf yang disusun AI. Guru perlu memeriksa kesesuaiannya dengan capaian pembelajaran, kalender pendidikan, dan kondisi peserta didik, lalu menyuntingnya seperlunya." },
+      { "q": "Mengapa akun baru harus menunggu persetujuan?", "a": "Pendaftar pertama menjadi admin utama yang memverifikasi akun berikutnya, sehingga pemakaian aplikasi terbatas pada guru yang memang berhak." },
+      { "q": "Apakah jadwal minggu di Promes sudah sesuai kalender sekolah saya?", "a": "Jadwal memakai pola standar, yaitu PTS, PAS, dan minggu libur di posisi tetap. Sesuaikan dengan kalender pendidikan sekolah Anda melalui file Word." }
+    ]
   }
 }
