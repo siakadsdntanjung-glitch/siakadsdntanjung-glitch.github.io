@@ -107,7 +107,7 @@
     ]
   },
 
-  "keuangan-sekolahku": {
+  "aplikasi-keuangan": {
     "body": "Keuangan Sekolahku adalah aplikasi web untuk mengelola tagihan SPP dan biaya sekolah lainnya, mulai dari penetapan tarif, penerbitan tagihan, pencatatan pembayaran, sampai laporan tunggakan. Di banyak sekolah, uang SPP masih dicatat di buku kas atau lembar kerja yang terpisah-pisah. Akibatnya, sulit memastikan siapa yang sudah membayar, berapa sisa cicilan, dan kuitansi mana yang sudah dikeluarkan. Tunggakan sering baru terlihat ketika semester hampir berakhir.\n\nAdmin atau petugas TU mengatur jenis biaya dan tarif per kelas, mencatat diskon atau beasiswa siswa tertentu, lalu menerbitkan tagihan satu kelas atau seluruh sekolah sekaligus setelah melihat pratinjaunya. Pembayaran tunai dan cicilan dicatat langsung dengan nomor kuitansi berurutan, sedangkan wali murid dapat mengirim bukti transfer dari akunnya sendiri untuk diperiksa petugas. Setelah disetujui, status tagihan berubah dan kuitansi PDF dapat diunduh. Kepala sekolah memantau target, realisasi, dan tunggakan lewat dashboard serta laporan yang bisa diekspor ke Excel. Aplikasi ini tidak memotong saldo rekening secara otomatis, jadi petugas tetap perlu mencocokkan bukti transfer dengan mutasi rekening sekolah.",
     "audience": "Cocok untuk bendahara, operator, dan petugas TU yang mengelola SPP dan biaya kegiatan, kepala sekolah yang memantau tunggakan, serta wali murid yang ingin melihat tagihan dan kuitansi anaknya.",
     "steps": [
