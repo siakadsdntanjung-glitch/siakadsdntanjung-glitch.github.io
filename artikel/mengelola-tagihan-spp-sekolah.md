@@ -9,7 +9,7 @@ Masalah klasik pembayaran SPP bukan pada kurangnya uang, melainkan pada pencatat
 
 Semua tagihan bertumpu pada dua data: kelas dan siswa. Buat kelas lebih dulu, misalnya VII-A atau VII-B, lengkap dengan angkatan atau tahun ajarannya. Setelah itu masukkan siswa dengan NISN, nama, kelas, nama wali, dan nomor WhatsApp wali. Nomor WhatsApp penting karena nantinya dipakai untuk mengirim pengingat dan bukti pembayaran.
 
-Bila data siswa sudah ada di lembar kerja, Anda tidak perlu mengetik ulang. Aplikasi [Keuangan Sekolahku](../../aplikasi/keuangan-sekolahku/) menyediakan format Excel yang bisa diunduh, diisi, lalu diimpor. Sebelum data benar-benar tersimpan, sistem menampilkan pratinjau dan menandai baris yang bermasalah, misalnya NISN ganda atau nama kelas yang tidak cocok.
+Bila data siswa sudah ada di lembar kerja, Anda tidak perlu mengetik ulang. Aplikasi [Keuangan Sekolahku](../../aplikasi/aplikasi-keuangan/) menyediakan format Excel yang bisa diunduh, diisi, lalu diimpor. Sebelum data benar-benar tersimpan, sistem menampilkan pratinjau dan menandai baris yang bermasalah, misalnya NISN ganda atau nama kelas yang tidak cocok.
 
 ## Menyusun jenis biaya dan tarif
 
@@ -54,4 +54,4 @@ Setiap pihak punya peran sendiri. Admin atau TU mengelola data dan pembayaran, w
 
 ## Penutup
 
-Pengelolaan SPP yang tertib tidak membutuhkan sistem rumit. Susun tarif dengan jelas, terbitkan tagihan sekaligus, catat setiap pembayaran dengan kuitansi bernomor, dan periksa laporan tunggakan secara rutin. Anda dapat mencoba [Keuangan Sekolahku](../../aplikasi/keuangan-sekolahku/) secara gratis untuk melihat apakah alurnya cocok dengan cara kerja sekolah Anda.
+Pengelolaan SPP yang tertib tidak membutuhkan sistem rumit. Susun tarif dengan jelas, terbitkan tagihan sekaligus, catat setiap pembayaran dengan kuitansi bernomor, dan periksa laporan tunggakan secara rutin. Anda dapat mencoba [Keuangan Sekolahku](../../aplikasi/aplikasi-keuangan/) secara gratis untuk melihat apakah alurnya cocok dengan cara kerja sekolah Anda.
